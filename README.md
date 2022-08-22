@@ -69,10 +69,10 @@ As a user, I should be able to view old carts
     - Azure Cloud
 
 # ERD
-[ERD](ERD.png)
+!(ERD)[ERD.png]
 
 # Trello
-(Here is the trello)[https://trello.com/b/O0zGF9j4/juniper-commerce-capstone-1406]
+[Here is the trello](https://trello.com/b/O0zGF9j4/juniper-commerce-capstone-1406)
 
 # Github
-(Here is the Repository)[https://github.com/220620NET/Craft-A-Cosmo]
+[Here is the Repository](https://github.com/220620NET/Craft-A-Cosmo)
