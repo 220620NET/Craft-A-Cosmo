@@ -8,49 +8,33 @@
 </head>
 <body>
     <div class="container">
-        <div class="login-from" *ngIf="mode==='login'">
+        <div class="login form-group" *ngIf="mode==='login'">
             <p>
                 <label for="email">Email </label>
                 <input id="email" name="email" class="form-control" type="text" [formControl]="email">
             </p>
             <p>
                 <label for="username">Username </label>
-                <input id="username" name="username" class="form-control" type="text" [formControl]="username">
+                <input id="username" name="username" class="form-control" type="text" [formControl]="username" >
             </p>
             <p>
                 <label for="password">Password</label>
-                <input id="password" name="password" class="form-control" type="password" [formControl]="password">
+                <input id="password" name="password" class="form-control" type="password" [formControl]="password" >
             </p>
         </div>
-        <div class="login-from" *ngIf="mode==='register'">
+        <div class="login form-group" *ngIf="mode==='register'">
             <p>
                 <label for="email">Email</label>
-                <input id="email" name="email" class="form-control" type="text" [formControl]="email">
+                <input type="text" id="email" name="email"  class="form-control" [formControl]="email" >
             </p>
             <p>
                 <label for="username">Username</label>
-                <input id="username" name="username" class="form-control" type="text" [formControl]="username">
+                <input id="username" name="username" class="form-control" type="text" [formControl]="username" >
             </p>
             <p>
                 <label for="password">Password</label>
-                <input id="password" name="password" class="form-control" type="password" [formControl]="password">
-            </p>
-            <p>
-                <label for="address-line-1">Address Line 1</label>
-                <input id="address-line-1" name="address-line-1" class="form-control" type="text" [formControl]="address">
-            </p>
-            <p>
-                <label for="city">City</label>
-                <input id="city" name="city" class="form-control" type="text" [formControl]="city">
-            </p>
-            <p>
-                <label for="state">State</label>
-                <input id="state" name="state" class="form-control" type="text" [formControl]="state">
-            </p>
-            <p>
-                <label for="zipcode">Zipcode</label>
-                <input id="zipcode" name="zipcode" class="form-control" type="number" [formControl]="zipcode">
-            </p>
+                <input id="password" name="password" class="form-control" type="password" [formControl]="password" >
+            </p> 
         </div>
         <div class="form-group">
             <button class="login-btn" *ngIf="mode==='login'" (click)="switchMode('register')">New User?</button>

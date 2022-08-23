@@ -37,8 +37,7 @@ As a user, I should be able to view old carts
     - Authservices to change user information
 - Select a greater amount of items at once
 - Product reviews 
-- Dark Mode
-- Custom Builder
+- Dark Mode 
 - Auth0 
 
 # Technologies used

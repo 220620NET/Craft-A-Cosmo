@@ -15,10 +15,7 @@ import { Injectable } from '@angular/core';
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
-    ReactiveFormsModule,
-    FormControl,
-    FormBuilder,
-    Injectable
+    ReactiveFormsModule,  
   ],
   providers: [],
   bootstrap: [AppComponent]
