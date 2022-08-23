@@ -1,0 +1,28 @@
+Auth Controller Layer:
+LoginWithUsername(User newUser)  [UsernameNotAvailableException, InvalidCredentialsException]
+LoginWithEmail(User newUser) [EmailNotAvailableException, InvalidCredentialsException]
+Register(User newUser) [InvalidInputException, UsernameNotAvailableException, EmailNotAvailableException]
+UpdateUser(User newUser) [UserNotAvaliableException]
+
+User Controller Layer:
+GetUserByEmail(string email) [EmailNotAvailableException]
+GetUserByUsername(string username) [UsernameNotAvailableException]
+GetUserByUserId(int userID) [UserNotAvaliableException]
+
+Auth Service Layer:
+LoginWithUsername(string username,string password) [UsernameNotAvailableException, InvalidCredentialsException]
+LoginWithEmail(string email, string password)[EmailNotAvailableException, InvalidCredentialsException]
+Register(User newUser) [InvalidInputException, UsernameNotAvailableException, EmailNotAvailableException]
+UpdateUser(User newUser) [UserNotAvaliableException]
+
+User Service Layer:
+GetUserByEmail(string email)[EmailNotAvailableException]
+GetUserByUsername(string username)[UsernameNotAvailableException]
+GetUserByUserId(int userID) [UserNotAvaliableException]
+
+User DataAccess Layer:
+GetUserByEmail(string email)[EmailNotAvailableException]
+GetUserByUsername(string username)[UsernameNotAvailableException]
+GetUserByUserId(int userID)[UserNotAvaliableException]
+CreateUser(User newUser) [InvalidInputException, UsernameNotAvailableException, EmailNotAvailableException]
+UpdateUser(User newUser) [UserNotAvaliableException]
