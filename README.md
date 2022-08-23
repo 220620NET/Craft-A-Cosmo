@@ -80,9 +80,9 @@ As a user, I should be able to view old carts
 [General layout for front-end](https://wireframe.cc/h2u9ws)
 
 # Schedule
-10 AM - Team meetings (individual by Leads) [1 hour]
-11 AM - Cohort meeting (team roles) [30 - 45 min]
-15 minute break
-Teams until lunch 
-2 PM - Team Lead meeting for figuring out progress
+- 10:30 AM - Team meetings (individual by Leads) [1 hour]
+- 11:30 AM - Cohort meeting (team roles) [30 - 45 min]
+- 15 minute break
+- Teams until lunch 
+- 2 PM - Team Lead meeting for figuring out progress
  
