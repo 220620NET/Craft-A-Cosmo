@@ -5,6 +5,7 @@ import { UserRegister } from '../models/UserRegister';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Injectable } from '@angular/core';
+import { ConditionalExpr } from '@angular/compiler';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,17 +20,19 @@ export class LoginComponent implements OnInit {
   address:FormControl=new FormControl('',[Validators.required]);
   city:FormControl=new FormControl('',[Validators.required]);
   state:FormControl=new FormControl('',[Validators.required]);
-  zipcode:FormControl=new FormControl('',[Validators.required]);
+  zipcode:FormControl=new FormControl(0,[Validators.required]);
   username:FormControl=new FormControl('');
   login():void{
     let user:UserLogin={
-      name:'',
+      name:'name',
       password:this.password.value
-    }
+    };
     if(this.email.value){
-      user.name=this.email.value
+      console.log('here in email')
+      user.name=this.email.value;
     }else if(this.username.value){
-      user.name=this.username.value
+      console.log('here in username')
+      user.name=this.username.value;
     }
     console.log(user)
   }
@@ -42,7 +45,7 @@ export class LoginComponent implements OnInit {
       city: this.city.value,
       state: this.state.value,
       zipcode: this.zipcode.value
-    }
+    };
     console.log(ur)
   }
   switchMode(a:string):void{
