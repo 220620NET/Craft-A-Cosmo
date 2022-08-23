@@ -15,13 +15,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb:FormBuilder) { }
   mode:string = 'login';
+  roles =[{name:"User"},{name:"Admin"}];
   email:FormControl=new FormControl('',[Validators.required]);
-  password:FormControl=new FormControl('',[Validators.required]);
-  address:FormControl=new FormControl('',[Validators.required]);
-  city:FormControl=new FormControl('',[Validators.required]);
-  state:FormControl=new FormControl('',[Validators.required]);
-  zipcode:FormControl=new FormControl(0,[Validators.required]);
+  password:FormControl=new FormControl('',[Validators.required]); 
   username:FormControl=new FormControl('');
+  role:string = 'User';
   login():void{
     let user:UserLogin={
       name:'name',
@@ -41,12 +39,12 @@ export class LoginComponent implements OnInit {
       Email: this.email.value,
       username: this.username.value,
       password: this.password.value,
-      address: this.address.value,
-      city: this.city.value,
-      state: this.state.value,
-      zipcode: this.zipcode.value
+      role:this.role 
     };
     console.log(ur)
+  }
+  switchRole(role:string):void{
+    this.role=role
   }
   switchMode(a:string):void{
     this.mode=a;
