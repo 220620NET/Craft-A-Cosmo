@@ -23,8 +23,6 @@ As a user, I should be able to view old carts
     - Option to purchase carts 
 - User profiles
     - View old carts
-- Reset Password
-    - Authservices to change user information
 - Documentation
     - General documentation on the code itself along with documentation on the meetings and project protocols
 - CI/CD Pipeline
@@ -35,9 +33,10 @@ As a user, I should be able to view old carts
     - Test Driven Development to verify that the verticals and methods work as intended
 
 # Stretch Goals
+- Reset Password
+    - Authservices to change user information
 - Select a greater amount of items at once
-- Product reviews
-- User can sell and buy (marketplace)
+- Product reviews 
 - Dark Mode
 - Custom Builder
 - Auth0 
@@ -86,3 +85,4 @@ As a user, I should be able to view old carts
 15 minute break
 Teams until lunch 
 2 PM - Team Lead meeting for figuring out progress
+ 
