@@ -68,14 +68,53 @@ public class AuthServiceTest
      *      Login Successes
      */
     [Fact]
-    public void LoginWithEmailSucceedsWithValidInformation()
+    public async void LoginWithEmailSucceedsWithValidInformation()
     {
+        var mockedRepo = new Mock<IUserRepo>();
+        User newUser = new()
+        {
+            UserId = 1,
+            Username = "test",
+            Password = "test",
+            Email = "test@test.com",
+            Role = "User"
+        };
+        mockedRepo.Setup(r => r.CreateUser(newUser)).Returns(newUser);
+
+        AuthService auth = new(mockedRepo);
+
+        User foundUser = await auth.LoginWithEmail(newUser.Email,newUser.Password);
+
+        mockedRepo.Verify(r => r.LoginWithEmail(newUser.Email,newUser.Password), Times.Once()); 
+
+        Assert.NotNull(foundUser);
+        Assert.Equal(foundUser.Email, newUser.Email);
+        Assert.Equal(foundUser.Password, newUser.Password);
 
     }
     [Fact]
-    public void LoginWithUsernameSucceedsWithValidInformation()
+    public async Task LoginWithUsernameSucceedsWithValidInformation()
     {
+        var mockedRepo = new Mock<IUserRepo>();
+        User newUser = new()
+        {
+            UserId = 1,
+            Username = "test",
+            Password = "test",
+            Email = "test@test.com",
+            Role = "User"
+        };
+        mockedRepo.Setup(r => r.CreateUser(newUser)).Returns(newUser);
 
+        AuthService auth = new(mockedRepo);
+
+        User foundUser = await auth.LoginWithUsername(newUser.Username,newUser.Password);
+
+        mockedRepo.Verify(r => r.LoginWithUsername(newUser.Username,newUser.Password), Times.Once()); 
+
+        Assert.NotNull(foundUser);
+        Assert.Equal(foundUser.Username, newUser.Username);
+        Assert.Equal(foundUser.Password, newUser.Password);
     }
 
     /*
