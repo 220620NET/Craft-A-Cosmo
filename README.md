@@ -1,6 +1,5 @@
 # About
-Cosminis are a recent hit involving digital companions that users interact with and care for in a social media setting. With the rise in popularity of this sensation; our store provides fans a way to bring the online experience into their homes in the form of cute plushies themed to each character. On our website each user can register and browse a unique collection of cosmini stuffed animals and place orders to be delivered straight to their home. Our application plans to feature an exciting "construct-your-own" tool, where
-users can craft their own special cosmini; and add personal flair to each item shipped! 
+Cosminis, an adorable little online creature, are a recent hit involving digital companions that users interact with and care for in a social media setting. With the rise in popularity of this sensation; our store provides fans a way to bring the online experience into their homes in the form of cute plushies themed to each character. On our website each user can register and browse a unique collection of cosmini stuffed animals and place orders to be delivered straight to their home. Our store allows users to purchase and own their own plush Cosminis and special merchandise (t-shirts and mugs) with their favorite little monster represented for the world to see.
 
 # User Stories
 As a user, I should be able to Login and Register
@@ -22,6 +21,7 @@ As a user, I should be able to view old carts
 - Checkout items from cart
     - Option to purchase carts 
 - User profiles
+    - Update user information (email, username)
     - View old carts
 - Documentation
     - General documentation on the code itself along with documentation on the meetings and project protocols
@@ -37,8 +37,7 @@ As a user, I should be able to view old carts
     - Authservices to change user information
 - Select a greater amount of items at once
 - Product reviews 
-- Dark Mode 
-- Auth0 
+- Dark Mode  
 
 # Technologies used
 - Backend
