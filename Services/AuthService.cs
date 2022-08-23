@@ -34,9 +34,9 @@ public class AuthService
             User found = await _userRepo.GetUserByEmail(email);
             return found.Password==password?found:throw new InvalidCredentialsException(); 
         }
-        catch (UsernameNotAvailableException)
+        catch (EmailNotAvailableException)
         {
-            throw new UsernameNotAvailableException();
+            throw new EmailNotAvailableException();
         }
         catch (InvalidCredentialsException)
         {
@@ -59,7 +59,7 @@ public class AuthService
             }
             else if(String.IsNullOrWhiteSpace(foundUsername.Username))
             {
-                throw new EmailNotAvailableException();
+                throw new UsernameNotAvailableException();
             }
             else
             {
