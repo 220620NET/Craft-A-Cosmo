@@ -8,16 +8,45 @@
 </head>
 <body>
     <div class="container">
-        <div class="login-from">
+        <div class="login-from" *ngIf="mode==='login'">
             <p>
                 <label for="email">Email/Username</label>
-                <imput id="email" name="email" class="form-control"></imput>
+                <imput id="email" name="email" class="form-control" type="text"></imput>
             </p>
             <p>
                 <label for="password">Password</label>
                 <imput id="password" name="password" class="form-control" type="password"></imput>
             </p>
-
+        </div>
+        <div class="login-from" *ngIf="mode==='register'">
+            <p>
+                <label for="email">Email</label>
+                <imput id="email" name="email" class="form-control" type="text"></imput>
+            </p>
+            <p>
+                <label for="username">Username</label>
+                <imput id="username" name="username" class="form-control" type="text"></imput>
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <imput id="password" name="password" class="form-control" type="password"></imput>
+            </p>
+            <p>
+                <label for="address-line-1">Address Line 1</label>
+                <imput id="address-line-1" name="address-line-1" class="form-control" type="text"></imput>
+            </p>
+            <p>
+                <label for="city">City</label>
+                <imput id="city" name="city" class="form-control" type="text"></imput>
+            </p>
+            <p>
+                <label for="state">State</label>
+                <imput id="state" name="state" class="form-control" type="text"></imput>
+            </p>
+            <p>
+                <label for="zipcode">Zipcode</label>
+                <imput id="zipcode" name="zipcode" class="form-control" type="number"></imput>
+            </p>
         </div>
     </div>
 </body>
