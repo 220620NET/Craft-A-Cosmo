@@ -11,11 +11,11 @@ public class AuthService
         _userRepo = userRepo;
     }
 
-    public User LoginWithUsername(string? username, string? password)
+    public async Task<User> LoginWithUsername(string? username, string? password)
     {
         try
         {
-            User found = _userRepo.GetUserByUsername(username);
+            User found = await _userRepo.GetUserByUsername(username);
             return found.Password==password?found:throw new InvalidCredentialsException(); 
         }
         catch (UsernameNotAvailableException)
@@ -27,11 +27,11 @@ public class AuthService
             throw new InvalidCredentialsException();
         }
     }
-    public User LoginWithEmail(string? email, string? password)
+    public async Task<User> LoginWithEmail(string? email, string? password)
     {
         try
         {
-            User found = _userRepo.GetUserByEmail(email);
+            User found = await _userRepo.GetUserByEmail(email);
             return found.Password==password?found:throw new InvalidCredentialsException(); 
         }
         catch (UsernameNotAvailableException)
@@ -43,12 +43,12 @@ public class AuthService
             throw new InvalidCredentialsException();
         }
     }
-    public User Register(User newUser)
+    public async Task<User> Register(User newUser)
     {  
         try
         {
-            User foundEmail = _userRepo.GetUserByEmail(newUser.Email);
-            User foundUsername = _userRepo.GetUserByUsername(newUser.Email);
+            User foundEmail = await _userRepo.GetUserByEmail(newUser.Email);
+            User foundUsername = await _userRepo.GetUserByUsername(newUser.Email);
             if (newUser.Password==null || newUser.Email==null)
             {
                 throw new InputInvalidException();
@@ -63,7 +63,7 @@ public class AuthService
             }
             else
             {
-                return _userRepo.CreateUser(newUser);
+                return await _userRepo.CreateUser(newUser);
             }
             }
         catch (EmailNotAvailableException)
@@ -80,14 +80,14 @@ public class AuthService
         }
 
     }
-    public User UpdateUser(User newUser)
+    public async Task<User> UpdateUser(User newUser)
     {
         try
         {
-            User foundUser = _userRepo.GetUserByUserId(newUser.UserId);
+            User foundUser = await _userRepo.GetUserByUserId(newUser.UserId);
             if (String.IsNullOrWhiteSpace(foundUser.Email))
             {
-                return _userRepo.UpdateUser(newUser);
+                return await _userRepo.UpdateUser(newUser);
             }
             else { throw new UserNotAvailableException(); }
         }
