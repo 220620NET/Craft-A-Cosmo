@@ -68,14 +68,23 @@ create table DOTNET_P3.product(
 
 create table DOTNET_P3.billingAddress(
 	billingAddressId int identity primary key,
+	buildingNum int,
+	streetName varchar,
+	apartmentNum int,
 	zipcode_fk int not null foreign key references DOTNET_P3.zipcode(zipcodeId),
 	city_fk int not null foreign key references DOTNET_P3.city(cityId),
 	state_fk int not null foreign key references DOTNET_P3.state(stateId)
 	);
 
 create table DOTNET_P3.shippingAddress(
+
 	shippingAddressId int identity primary key,
+	buildingNum int,
+	streetName varchar,
+	apartmentNum int,
 	zipcode_fk int not null foreign key references DOTNET_P3.zipcode(zipcodeId),
 	city_fk int not null foreign key references DOTNET_P3.city(cityId),
 	state_fk int not null foreign key references DOTNET_P3.state(stateId)
 	);	
+	
+drop table DOTNET_P3.shippingAddress;
