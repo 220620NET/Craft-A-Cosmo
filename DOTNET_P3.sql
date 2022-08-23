@@ -8,12 +8,11 @@ create table DOTNET_P3.users(
 	role varchar(8) not null check (role in ('Guest', 'User', 'Admin')) default 'User'
 	);
 	
-create table DOTNET_P3.orders(
-	orderId int identity primary key,
+create table DOTNET_P3.items(
+	itemId int identity primary key,
 	productId_fk int not null foreign key references DOTNET_P3.product(productId),
-	orderDetailsId_fk int not null foreign key references DOTNET_P3.orderDetails(orderDetailsId),
-	userId_fk int not null foreign key references DOTNET_P3.users(userId),		
-	orderTime datetime not null
+	cart_fk int not null foreign key references DOTNET_P3.cart(cartId),
+	quantity int not null
 	);
 
 create table DOTNET_P3.city(
@@ -33,13 +32,13 @@ create table DOTNET_P3.zipcode(
 	zipCode int not null
 	);
 	
-create table DOTNET_P3.orderDetails(
-	orderDetailsId int identity primary key,
-	billingAddress_fk int not null foreign key references DOTNET_P3.billingAddress(billingAddressId),
-	shippingAddress_fk int not null foreign key references DOTNET_P3.shippingAddress(shippingAddressId),
-	orderTime datetime not null,
+create table DOTNET_P3.cart(
+	cartId int identity primary key,
+	shippingAddress_fk int not null foreign key references DOTNET_P3.Address(AddressId),
+	billingAddress_fk int not null foreign key references DOTNET_P3.Address(AddressId),
+	userId_fk int not null foreign key references DOTNET_P3.users(userId),
+	purchaseTime datetime,
 	shippingNote varchar(50),
-	quantity int not null
 	);
 
 create table DOTNET_P3.productOptions(
@@ -68,23 +67,27 @@ create table DOTNET_P3.product(
 
 create table DOTNET_P3.billingAddress(
 	billingAddressId int identity primary key,
-	buildingNum int,
-	streetName varchar,
+	streetAddy varchar,
 	apartmentNum int,
 	zipcode_fk int not null foreign key references DOTNET_P3.zipcode(zipcodeId),
 	city_fk int not null foreign key references DOTNET_P3.city(cityId),
 	state_fk int not null foreign key references DOTNET_P3.state(stateId)
 	);
 
-create table DOTNET_P3.shippingAddress(
-
-	shippingAddressId int identity primary key,
-	buildingNum int,
-	streetName varchar,
+create table DOTNET_P3.Address(
+	AddressId int identity primary key,
+	userId_fk int foreign key references DOTNET_P3.users(userId),	
+	streetAddy varchar,
 	apartmentNum int,
 	zipcode_fk int not null foreign key references DOTNET_P3.zipcode(zipcodeId),
 	city_fk int not null foreign key references DOTNET_P3.city(cityId),
 	state_fk int not null foreign key references DOTNET_P3.state(stateId)
 	);	
 	
-drop table DOTNET_P3.shippingAddress;
+drop table DOTNET_P3.Address;
+
+drop table DOTNET_P3.billingAddress;
+
+drop table DOTNET_P3.orders;
+
+drop table DOTNET_P3.orderDetails;
