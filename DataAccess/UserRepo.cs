@@ -102,28 +102,6 @@ public class UserRepo : IUserRepo
         return newUser;
     }
 
-    public async Task<User> UpdateUser(User newUser)
-        {
-            try
-            {
-                User? p = await _context.Users.FirstOrDefaultAsync(user => user.UserId == newUser.UserId);
-                p.Username = newUser.Username!=""? newUser.Username:p.Username;
-                p.Password = newUser.Password != "" ? newUser.Password : p.Password;
-                p.Email = newUser.Email != "" ? newUser.Email : p.Email;
-                p.Role = newUser.Role != "" ? newUser.Role : p.Role;
-                Finish();
-                return p ?? throw new UserNotAvailableException();
-
-        }
-        catch (NullReferenceException)
-        {
-            throw new UserNotAvailableException();
-        }
-            catch (UserNotAvailableException)
-            {
-                throw new UserNotAvailableException();
-            }
-        }
     protected void Finish()
     {
         _context.SaveChanges();
