@@ -8,6 +8,8 @@ public interface IProductsDAO
 {
     public List<Product> GetAllProducts();
     public bool AddProduct();
+    public bool DeleteProducts();
+    public bool EditProducts();
     public bool GetProductDescription();
     public bool GetProductPrice();
     public bool GetProductName();

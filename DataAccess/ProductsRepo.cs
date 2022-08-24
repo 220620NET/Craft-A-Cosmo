@@ -27,6 +27,16 @@ public class ProductsRepo : IProductsDAO
         return false;
     }
 
+    public bool DeleteProduct()
+    {
+        return false;
+    }
+
+    public bool EditProduct()
+    {
+        return false;
+    }    
+
     public bool GetProductDescription()
     {
         return false;
