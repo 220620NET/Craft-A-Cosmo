@@ -1,5 +1,6 @@
 using DataAccess.Interface;
 using DataAccess.Entities;
+using CustomExceptions;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -17,48 +18,101 @@ public class CartRepo : ICartDAO
   /// <inheritdoc />
   public Cart AdjustItems(int cartToUpdate, Item itemToAdd)
   {
-    throw new NotImplementedException();
+    Cart? Cart2Find = _context.Carts.Find(cartToUpdate); //try to find the respective cart
+    if(Cart2Find == null)
+    {
+      throw new CartNotFoundException("Cart with this ID does not exist");
+    }
+
+    Item? Item2Find = _context.Items.AsNoTracking().Where(Item => (Item.CartFk == cartToUpdate) && (Item.ProductIdFk == itemToAdd.ProductIdFk)).FirstOrDefault(); //try to look for the item
+
+    if(Item2Find == null)
+    {
+      _context.Add(itemToAdd);
+      _context.SaveChanges(); //persist the change
+      _context.ChangeTracker.Clear(); //clear the tracker for the next person
+      return Cart2Find;
+    }
+    Item2Find.Quantity = itemToAdd.Quantity;
+    _context.SaveChanges(); //persist the change
+    _context.ChangeTracker.Clear(); //clear the tracker for the next person
+    return Cart2Find;
   }
 
   /// <inheritdoc />
   public bool ConfirmPurchase(Cart cartToPurchase)
   {
-    throw new NotImplementedException();
+    Cart? Cart2Find = _context.Carts.Find(cartToPurchase.CartId); //try to find the respective cart
+    if(Cart2Find == null)
+    {
+      throw new CartNotFoundException("Cart with this ID does not exist");
+    }
+    Cart2Find.PurchaseTime = cartToPurchase.PurchaseTime;
+    _context.SaveChanges(); //persist the change
+    _context.ChangeTracker.Clear(); //clear the tracker for the next person
+    return true; //this method cannot return false
   }
 
   /// <inheritdoc />
   public bool CreateCart(Cart cartToCreate)
   {
-    throw new NotImplementedException();
+    _context.Add(cartToCreate);
+    _context.SaveChanges(); //persist the change
+    _context.ChangeTracker.Clear(); //clear the tracker for the next person
+    return true;
   }
 
   /// <inheritdoc />
   public bool DeleteCart(int cartId2Delete)
   {
-    throw new NotImplementedException();
+    Cart? Cart2Find = _context.Carts.Find(cartId2Delete); //try to find the respective cart
+    if(Cart2Find == null)
+    {
+      throw new CartNotFoundException("Cart with this ID does not exist");
+    }
+    _context.Remove(Cart2Find);
+    _context.SaveChanges(); //persist the change
+    _context.ChangeTracker.Clear(); //clear the tracker for the next person
+    return true;
   }
 
   /// <inheritdoc />
   public Cart findCartByCartID(int cartID2Find)
   {
-    throw new NotImplementedException();
+    return _context.Carts.Find(cartID2Find) ?? throw new CartNotFoundException("Please double check your Cart ID");
   }
 
   /// <inheritdoc />
   public List<Cart> findCartsByUserID(int userID2Find)
   {
-    throw new NotImplementedException();
+    return _context.Carts.AsNoTracking().Where(Cart => Cart.UserIdFk == userID2Find).ToList() ?? throw new UserNotFoundException("This person is a saint");
   }
 
   /// <inheritdoc />
   public Cart UpdateBillingAddress(Cart UpdatedBillingAddressCart)
   {
-    throw new NotImplementedException();
+    Cart? Cart2Find = _context.Carts.Find(UpdatedBillingAddressCart.CartId); //try to find the respective cart
+    if(Cart2Find == null)
+    {
+      throw new CartNotFoundException("Cart with this ID does not exist");
+    }
+    Cart2Find.BillingAddressFk = UpdatedBillingAddressCart.BillingAddressFk;
+    _context.SaveChanges(); //persist the change
+    _context.ChangeTracker.Clear(); //clear the tracker for the next person
+    return Cart2Find;
   }
 
   /// <inheritdoc />
   public Cart UpdateShippingAddress(Cart UpdateShipAddressCart)
   {
-    throw new NotImplementedException();
+    Cart? Cart2Find = _context.Carts.Find(UpdateShipAddressCart.CartId); //try to find the respective cart
+    if(Cart2Find == null)
+    {
+      throw new CartNotFoundException("Cart with this ID does not exist");
+    }
+    Cart2Find.BillingAddressFk = UpdateShipAddressCart.ShippingAddressFk;
+    _context.SaveChanges(); //persist the change
+    _context.ChangeTracker.Clear(); //clear the tracker for the next person
+    return Cart2Find;
   }
 }
