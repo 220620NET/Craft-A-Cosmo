@@ -272,16 +272,23 @@ public class AuthServiceTest
     public async Task UpdateFailsWithInvalidUserID()
     {
         var mockedRepo = new Mock<IUserRepo>();
-
-        User userToTest = new()
+        User userToAdd = new()
         {
             UserId = 1,
+            Username = "test",
+            Password = "test",
+            Email = "test@test.com",
+            Role = "User"
+        };
+        User userToTest = new()
+        {
+            UserId = 2,
             Username = "test2",
             Password = "test",
             Email = "test@test.com",
             Role = "User"
         };
-
+        mockedRepo.Setup(r => r.GetUserByUserId(userToAdd.UserId)).ReturnsAsync(userToAdd);
         AuthService auth = new(mockedRepo.Object);
 
         await Assert.ThrowsAsync<UserNotAvailableException>(() => auth.UpdateUser(userToTest));
@@ -312,7 +319,7 @@ public class AuthServiceTest
             Role = "User"
         };
 
-        mockedRepo.Setup(r => r.CreateUser(userToAdd)).ReturnsAsync(userToAdd);
+        mockedRepo.Setup(r => r.GetUserByUserId(userToAdd.UserId)).ReturnsAsync(userToAdd);
 
         AuthService auth = new(mockedRepo.Object);
 
