@@ -1,10 +1,7 @@
-using Models;
-
-
 
 namespace CustomExceptions
 {
-    public class UserNotFound : Exception
+    public class UserNotFoundException : Exception
     {
         public UserNotFound()
         {

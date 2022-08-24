@@ -1,31 +1,35 @@
 using CustomExceptions;
 using DataAccess.Entities;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess;
 public class UserRepo : IUserRepo
 {
 
-    private readonly  P3DbContext _context;
+    private readonly  p3dbContext _context;
     /// <summary>
     /// 
     /// </summary>
     /// <param name="context"></param>
-    public UserRepo(P3DbContext context)
-
- 
+    public UserRepo(p3dbContext context)
     {
         _context = context;
     }
-     public User GetUserByEmail(string email)
+    public User GetUserByEmail(string email)
     {
         try
         {
-             return _context.User.AsNoTracking().FirstOrDefault(user => user.email == email)!;
-           
+            User? user = _context.Users.AsNoTracking().FirstOrDefault(user => user.Email == email);
+            if (user == null) 
+            { 
+                throw new EmailNotAvailableException(); 
+            }
+            return user!;           
         }
-        catch (UserNotFoundException)
+        catch (ArgumentNullException)
         {
-            throw new InvalidECredentialsException();
+            throw new EmailNotAvailableException();
         }
         catch (EmailNotAvailableException)
         {
@@ -38,20 +42,20 @@ public class UserRepo : IUserRepo
     /// <param name="username">A valid username</param>
     /// <returns>The requested user</returns>
     /// <exception cref="NotImplementedException">There is no user with that username</exception>
-    public User GetUserByusername(string username)
+    public User GetUserByUsername(string username)
     {
         try
         {
-             return _context.Users.AsNoTracking().FirstOrDefault(user => user.username == username)!;
+             return _context.Users.AsNoTracking().FirstOrDefault(user => user.Username == username)!;
            
         }
         catch (UserNotFoundException)
         {
             throw new InvalidInputException();
         }
-        catch (UserNameNotAvailableException)
+        catch (UsernameNotAvailableException)
         {
-            throw new UserNameNotAvailableException();
+            throw new UsernameNotAvailableException();
         }
         
     }
@@ -63,7 +67,7 @@ public class UserRepo : IUserRepo
     /// <exception cref="UsernameNotAvailableException">There is no user with that ID</exception>
     public User GetUserByUserId(int userID)
     {
-        User? foundUser = _context.Users.AsNoTracking().FirstOrDefault(user => user.userID == userID);
+        User? foundUser = _context.Users.AsNoTracking().FirstOrDefault(user => user.UserId == userID);
         if(foundUser != null) return foundUser;
         throw new UsernameNotAvailableException();
     }
@@ -74,16 +78,16 @@ public class UserRepo : IUserRepo
     /// <returns>The new user</returns>
     public User CreateUser(User newUser)
     {
-        _context.User.Add(newUser);
+        _context.Users.Add(newUser);
         Finish();
         return newUser;
     }
 
-    public User UpdateUser(user newUser)
+    public User UpdateUser(User newUser)
         {
             try
             {
-                User? p = _dbContext.User.FirstOrDefault(t => t.userID == User.userID);                
+                User? p = _context.Users.FirstOrDefault(t => t.UserId == newUser.UserId);                
                 Finish();
                 return p ?? throw new UserNotAvailableException();
 

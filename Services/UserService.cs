@@ -1,4 +1,4 @@
-using Models;
+using DataAccess.Entities;
 using DataAccess;
 using CustomExceptions;
 
@@ -6,9 +6,9 @@ namespace Services;
 
 public class UserService
 {
-    private readonly IUserDao _userRepo;
+    private readonly IUserRepo _userRepo;
 
-    public UserService(IUserDao repo)
+    public UserService(IUserRepo repo)
     {
         _userRepo = repo;
     }
@@ -17,12 +17,12 @@ public class UserService
     {
         try
         {
-            return await _userRepo.GetUserByEmail();
+            return await _userRepo.GetUserByEmail(email);
         }
         catch (EmailNotAvailableException)
         {
             
-            throw new EmailNotAvailableException;
+            throw new EmailNotAvailableException();
         }
     }
 
@@ -30,12 +30,12 @@ public class UserService
     {
         try
         {
-            return await _userRepo.GetUserByUsername();
+            return await _userRepo.GetUserByUsername(username);
         }
         catch (UsernameNotAvailableException)
         {
             
-            throw new UsernameNotAvailableException;
+            throw new UsernameNotAvailableException();
         }
     }
 
@@ -43,12 +43,12 @@ public class UserService
     {
         try
         {
-            return await _userRepo.GetUserById();
+            return await _userRepo.GetUserByUserId(userId);
         }
-        catch (UserNotAvaliableException)
+        catch (UserNotAvailableException)
         {
             
-            throw new UserNotAvaliableException;
+            throw new UserNotAvailableException();
         }
     }
 }

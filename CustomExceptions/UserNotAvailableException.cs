@@ -3,12 +3,21 @@ using System.Runtime.Serialization;
 namespace CustomExceptions;
 
 [System.Serializable]
-public class UserNotAvailableExceptionException : System.Exception
+public class UserNotAvailableException : Exception
 {
-    public UserNotAvailableExceptionException() { }
-    public UserNotAvailableExceptionException(string message) : base(message) { }
-    public UserNotAvailableExceptionException(string message, System.Exception inner) : base(message, inner) { }
-    protected UserNotAvailableExceptionException(
-        System.Runtime.Serialization.SerializationInfo info,
-        System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+    public UserNotAvailableException()
+    {
+    }
+
+    public UserNotAvailableException(string? message) : base(message)
+    {
+    }
+
+    public UserNotAvailableException(string? message, Exception? innerException) : base(message, innerException)
+    {
+    }
+
+    protected UserNotAvailableException(SerializationInfo info, StreamingContext context) : base(info, context)
+    {
+    }
 }
