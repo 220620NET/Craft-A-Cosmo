@@ -13,8 +13,7 @@ export class CartComponent implements OnInit {
 
   constructor(private cartApi : CartApiService, private router : Router) { }
 
-  foundCart : Cart = 
-  this.cartApi.FindCartByUserId(1).subscribe(cart => this.foundCart=cart) 
+  
 
   ngOnInit(): void {
   }

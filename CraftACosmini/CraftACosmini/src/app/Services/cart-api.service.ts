@@ -38,8 +38,8 @@ export class CartApiService
     return this.http.get(this.url + `confirmPurchase?cartToPurchase=${cartToPurchase}`) as Observable<Cart>; 
   }
 
-  FindCartByUserId(userId2Find : number) : Observable<Cart> {
-    return this.http.get(this.url + `findCart?userIdToFind=${userId2Find}`) as Observable<Cart>; 
+  FindCartByUserId(userId2Find : number) : Observable<Cart[]> {
+    return this.http.get(this.url + `findCart?userIdToFind=${userId2Find}`) as Observable<Cart[]>; 
   }
 
 }
