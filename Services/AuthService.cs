@@ -71,7 +71,7 @@ public class AuthService
             {
                 email= false;
             }
-            if (email)
+            finally
             {
                 try
                 { 

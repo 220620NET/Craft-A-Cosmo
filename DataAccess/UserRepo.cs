@@ -75,7 +75,10 @@ public class UserRepo : IUserRepo
         try
         {
             User? foundUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.UserId == userID);
-            if(foundUser != null) return foundUser;
+            if (foundUser != null)
+            {
+                return foundUser;
+            }
             throw new UserNotAvailableException();
         }
         catch (NullReferenceException)
@@ -103,11 +106,19 @@ public class UserRepo : IUserRepo
         {
             try
             {
-                User? p = await _context.Users.FirstOrDefaultAsync(t => t.UserId == newUser.UserId);                
+                User? p = await _context.Users.FirstOrDefaultAsync(user => user.UserId == newUser.UserId);
+                p.Username = newUser.Username!=""? newUser.Username:p.Username;
+                p.Password = newUser.Password != "" ? newUser.Password : p.Password;
+                p.Email = newUser.Email != "" ? newUser.Email : p.Email;
+                p.Role = newUser.Role != "" ? newUser.Role : p.Role;
                 Finish();
                 return p ?? throw new UserNotAvailableException();
 
-            }
+        }
+        catch (NullReferenceException)
+        {
+            throw new UserNotAvailableException();
+        }
             catch (UserNotAvailableException)
             {
                 throw new UserNotAvailableException();
