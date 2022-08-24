@@ -1,5 +1,5 @@
 using Moq;
-using Models;
+using DataAccess.Entities;
 using CustomExceptions;
 using Services;
 using Xunit;
@@ -19,9 +19,9 @@ public class UserServiceTests
         var mockUser = new Mock<IUserRepo>();
     
         User newUser = new User{
-            UserID = 2,
+            UserId = 2,
             Email = "merp@merp.com",
-            username = "merple",
+            Username = "merple",
 
         };
 

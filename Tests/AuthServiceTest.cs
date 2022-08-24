@@ -26,7 +26,7 @@ public class AuthServiceTest
         };
         mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).Returns(userToReturn);
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
 
         await Assert.ThrowsAsync<UsernameNotAvailableException>(() => auth.LoginWithUsername("wrongUsername", "test"));
     }
@@ -43,7 +43,7 @@ public class AuthServiceTest
             Role = "User"
         };
         mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).Returns(userToReturn);
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
         await Assert.ThrowsAsync<EmailNotAvailableException>(() => auth.LoginWithEmail("wrongEmail", "test"));
     }
     [Fact]
@@ -62,7 +62,7 @@ public class AuthServiceTest
 
         mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).Returns(userToReturn);
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
 
         await Assert.ThrowsAsync<EmailNotAvailableException>(() => auth.LoginWithUsername("test", "wrongPassword"));
     }
@@ -81,7 +81,7 @@ public class AuthServiceTest
         };
         mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).Returns(userToReturn);
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
         
         await Assert.ThrowsAsync<EmailNotAvailableException>(() => auth.LoginWithEmail("test@test.com", "wrongPassword"));
     }
@@ -168,7 +168,7 @@ public class AuthServiceTest
 
         mockedRepo.Setup(r => r.CreateUser(userToAdd)).Returns(userToAdd);
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
 
         await Assert.ThrowsAsync<UsernameNotAvailableException>(() => auth.Register(userToTest));
     }
@@ -197,7 +197,7 @@ public class AuthServiceTest
 
         mockedRepo.Setup(r => r.CreateUser(userToAdd)).Returns(userToAdd);
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
 
         await Assert.ThrowsAsync<EmailNotAvailableException>(() => auth.Register(userToTest));
     }
@@ -215,9 +215,9 @@ public class AuthServiceTest
             Role = "User"
         };
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
 
-        await Assert.ThrowsAsync<InputInvalidException>(() => auth.Register(userToTest));
+        await Assert.ThrowsAsync<InvalidInputException>(() => auth.Register(userToTest));
     }
     [Fact]
     public async Task RegisterFailsWithMissingPassword()
@@ -233,9 +233,9 @@ public class AuthServiceTest
             Role = "User"
         };
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
 
-        await Assert.ThrowsAsync<InputInvalidException>(() => auth.Register(userToTest));
+        await Assert.ThrowsAsync<InvalidInputException>(() => auth.Register(userToTest));
     }
     /*
      *      Register Succeeds
@@ -254,11 +254,11 @@ public class AuthServiceTest
             Role = "User"
         };
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
 
         User newUser = await  auth.Register(userToTest);
 
-        mockedRepo.Verify(r => r.Register(userToTest), Times.Once()); 
+        mockedRepo.Verify(r => r.GetUserByUserId(userToTest.UserId), Times.Once()); 
 
         Assert.NotNull(newUser);
         Assert.Equal(newUser.Username, userToTest.Username);
@@ -281,7 +281,7 @@ public class AuthServiceTest
             Role = "User"
         };
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
 
         await Assert.ThrowsAsync<UserNotAvailableException>(() => auth.UpdateUser(userToTest));
     }
@@ -313,14 +313,15 @@ public class AuthServiceTest
 
         mockedRepo.Setup(r => r.CreateUser(userToAdd)).Returns(userToAdd);
 
-        AuthService auth = new(mockedRepo);
+        AuthService auth = new(mockedRepo.Object);
 
         User updatedUser = await auth.UpdateUser(userToTest);
 
-        mockedRepo.Verify(r => r.updatedUser(userToTest), Times.Once());
+        mockedRepo.Verify(r => r.GetUserByUserId(userToTest.UserId), Times.Once());
 
         Assert.NotNull(updatedUser);
         Assert.Equal(updatedUser.Username, userToTest.Username);
         Assert.Equal(updatedUser.Password, userToTest.Password);
+        Assert.Equal(userToTest,updatedUser);
     }
 }
