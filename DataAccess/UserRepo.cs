@@ -27,7 +27,7 @@ public class UserRepo : IUserRepo
             }
             return user!;           
         }
-        catch (ArgumentNullException)
+        catch (NullReferenceException)
         {
             throw new EmailNotAvailableException();
         }
@@ -46,18 +46,23 @@ public class UserRepo : IUserRepo
     {
         try
         {
-             return await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Username == username)!;
+            User? found = await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Username == username);
+            if (found == null)
+            {
+                throw new UsernameNotAvailableException();
+            }
+            return  found;
            
-        }
-        catch (UserNotFoundException)
+        } 
+        catch (NullReferenceException)
         {
-            throw new InvalidInputException();
+            throw new UsernameNotAvailableException();
         }
         catch (UsernameNotAvailableException)
         {
             throw new UsernameNotAvailableException();
         }
-        
+
     }
     /// <summary>
     /// Will get a specific user
@@ -67,9 +72,20 @@ public class UserRepo : IUserRepo
     /// <exception cref="UsernameNotAvailableException">There is no user with that ID</exception>
     public async Task<User> GetUserByUserId(int userID)
     {
-        User? foundUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.UserId == userID);
-        if(foundUser != null) return foundUser;
-        throw new UsernameNotAvailableException();
+        try
+        {
+            User? foundUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.UserId == userID);
+            if(foundUser != null) return foundUser;
+            throw new UserNotAvailableException();
+        }
+        catch (NullReferenceException)
+        {
+            throw new UsernameNotAvailableException();
+        }
+        catch (UserNotAvailableException)
+        {
+            throw new UserNotAvailableException();
+        }
     }
     /// <summary>
     /// Will add a user to the database
