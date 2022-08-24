@@ -51,4 +51,28 @@ public class UserService
             throw new UserNotAvailableException();
         }
     }
+     public async Task<User> CreateUser(User newUser)
+    {
+        try
+        {
+            return await _userRepo.CreateUser(newUser);
+        }
+        catch (UserNotAvailableException)
+        {
+            
+            throw new UserNotAvailableException();
+        }
+    }
+    public async Task<User> UpdateUser(User newUser)
+    {
+        try
+        {
+            return await _userRepo.UpdateUser(newUser);
+        }
+        catch (UserNotAvailableException)
+        {
+            
+            throw new UserNotAvailableException();
+        }
+    }
 }
