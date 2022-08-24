@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+
+    height: 100vh;
+}
+.container{
+    background-color: rgba(123, 0, 255, 0.348);
+    width: fit-content;
+    margin-top: auto;
+    position: fixed;
+    top: 35vh;
+    left:40vw;
+    padding: 20px;
+    border-radius: 15px;
+}
+p{
+    margin-bottom:10px;
+    display: table;
+}
+label{
+    display: table-row;
+    font-size: 24px;
+}
+button{
+    margin: 0 10px 0 10px;
+    width: 80px;
+    padding: 5px;
+}
