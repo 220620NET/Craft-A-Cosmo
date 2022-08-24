@@ -4,9 +4,9 @@ namespace DataAccess;
 
 public interface IUserRepo
 {
-    public User GetUserByEmail(string email);
-     public User GetUserByUsername(string username);
-    public User GetUserByUserId(int userID);
-    public User CreateUser(User newUser);
-    public User UpdateUser(User newUser);
+    Task<User> GetUserByEmail(string email);
+    Task<User> GetUserByUsername(string username);
+    Task<User> GetUserByUserId(int userID);
+    Task<User> CreateUser(User newUser);
+    Task<User> UpdateUser(User newUser);
 }

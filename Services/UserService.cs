@@ -39,7 +39,7 @@ public class UserService
         }
     }
 
-    public async Task<User> GetUserById(int userId)
+    public async Task<User> GetUserByUserId(int userId)
     {
         try
         {

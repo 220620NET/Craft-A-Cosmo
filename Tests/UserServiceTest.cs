@@ -36,42 +36,45 @@ public class UserServiceTests
     }
 
     [Fact]
-    public async Task GetUserById()
+    public async Task GetUserByUserId()
     {
         var mockUser = new Mock<IUserRepo>();
     
         User newUser = new User{
-            UserID = 2,
+            UserId = 2,
             Email = "merp@merp.com",
-            username = "merple",
+            Username = "merple",
         };
 
         mockUser.Setup(repo => repo.CreateUser(newUser)).ReturnsAsync(newUser);
-        mockUser.Setup(repo => repo.GetUserById(newUser.UserID)).ReturnsAsync(newUser);
+        mockUser.Setup(repo => repo.GetUserByUserId(newUser.UserId)).ReturnsAsync(newUser);
 
         UserService service = new UserService(mockUser.Object);
 
-        var existingUser = await service.GetUserById(newUser.UserID);
+        var existingUser = await service.GetUserByUserId(newUser.UserId);
 
-        Assert.Equal(newUser.UserID, existingUser.UserID);
+        Assert.Equal(newUser.UserId, existingUser.UserId);
     }
 
     [Fact]
-    public void GetUserByUsername()
+    public async Task GetUserByUsername()
     {
-        var mockUser = new Mock<IUserRepo>
+        var mockUser = new Mock<IUserRepo>();
 
         User newUser = new User{
-            UserID = 2,
+            UserId = 2,
             Email = "merp@merp.com",
-            username = "merple",
-        }
+            Username = "merple",
+        };
         
         mockUser.Setup(repo => repo.CreateUser(newUser)).ReturnsAsync(newUser);
-        mockUser.Setup(repo => repo.GetUserById(newUser.UserID)).ReturnsAsync(newUser);
+        mockUser.Setup(repo => repo.GetUserByUsername(newUser.Username)).ReturnsAsync(newUser);
 
-        var existingUser = await service.GetUserById(newUser.UserID);
+        UserService service = new UserService(mockUser.Object);
 
-        Assert.Equal(newUser.username, existingUser.username);
+
+        var existingUser = await service.GetUserByUsername(newUser.Username);
+
+        Assert.Equal(newUser.Username, existingUser.Username);
     }
 }
