@@ -48,10 +48,13 @@ create table DOTNET_P3.productOptions(
 	soundVariant varchar(45)
 	);
 
+insert into DOTNET_P3.productOptions (colorVariant) values ('Blue');
+
 create table DOTNET_P3.category(
 	categoryId int identity primary key,
 	categoryName varchar(45)
 	);
+insert into DOTNET_P3.category (categoryName) values ('Plushie/y');
 	
 create table DOTNET_P3.product(
 	productId int identity primary key,
@@ -64,6 +67,8 @@ create table DOTNET_P3.product(
 	productImage varchar(45),
 	listed tinyint
 	);
+
+insert into DOTNET_P3.product (categoryId_fk, productOptionsId_fk, price, description, productName, productCol) values (1,3, 59.99,'Weighted Bud Plush', 'Bud!', 'Still wondering about this column.');
 
 create table DOTNET_P3.billingAddress(
 	billingAddressId int identity primary key,
@@ -91,3 +96,4 @@ drop table DOTNET_P3.billingAddress;
 drop table DOTNET_P3.orders;
 
 drop table DOTNET_P3.orderDetails;
+
