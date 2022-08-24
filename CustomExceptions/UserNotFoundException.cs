@@ -1,21 +1,23 @@
 
+using System.Runtime.Serialization;
+
 namespace CustomExceptions
 {
     public class UserNotFoundException : Exception
     {
-        public UserNotFound()
+        public UserNotFoundException()
         {
         }
 
-        public UserNotFound(string? message) : base(message)
+        public UserNotFoundException(string? message) : base(message)
         {
         }
 
-        public UserNotFound(string? message, Exception? innerException) : base(message, innerException)
+        public UserNotFoundException(string? message, Exception? innerException) : base(message, innerException)
         {
         }
 
-        protected UserNotFound(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected UserNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

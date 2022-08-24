@@ -2,21 +2,21 @@ using System.Runtime.Serialization;
 
 namespace CustomExceptions;
 
-public class InvalidInputException  : Exception
+public class InvalidInputException : Exception
 {
-    public InvalidInputExceptionException()
+    public InvalidInputException()
     {
     }
 
-    public InvalidInputExceptionException(string? message) : base(message)
+    public InvalidInputException(string? message) : base(message)
     {
     }
 
-    public InvalidInputExceptionException(string? message, Exception? innerException) : base(message, innerException)
+    public InvalidInputException(string? message, Exception? innerException) : base(message, innerException)
     {
     }
 
-    protected InvalidInputExceptionException(SerializationInfo info, StreamingContext context) : base(info, context)
+    protected InvalidInputException(SerializationInfo info, StreamingContext context) : base(info, context)
     {
     }
 }

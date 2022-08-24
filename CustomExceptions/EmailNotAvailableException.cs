@@ -4,7 +4,7 @@ namespace CustomExceptions;
  
 public class EmailNotAvailableException : Exception
 {
-    public EmailNotAvailableException()
+    public   EmailNotAvailableException()
     {
     }
 
