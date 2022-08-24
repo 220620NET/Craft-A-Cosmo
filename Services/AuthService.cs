@@ -51,7 +51,7 @@ public class AuthService
             User foundUsername = await _userRepo.GetUserByUsername(newUser.Email);
             if (newUser.Password==null || newUser.Email==null)
             {
-                throw new InputInvalidException();
+                throw new  InvalidInputException();
             }
             else if(String.IsNullOrWhiteSpace(foundEmail.Email))
             {
@@ -74,9 +74,9 @@ public class AuthService
         {
             throw new UsernameNotAvailableException();
         }
-        catch (InputInvalidException)
+        catch (InvalidInputException)
         {
-            throw new InputInvalidException();
+            throw new InvalidInputException();
         }
 
     }
