@@ -172,7 +172,7 @@ public class AuthServiceTest
 
         await Assert.ThrowsAsync<UsernameNotAvailableException>(() => auth.Register(userToTest));
     }
-    [Fact]
+    // [Fact]
     // public async Task RegisterFailsWithInvalidEmail()
     // {
     //     var mockedRepo = new Mock<IUserRepo>();
@@ -241,7 +241,7 @@ public class AuthServiceTest
     /*
      *      Register Succeeds
      */
-    [Fact]
+    // [Fact]
     // public async Task RegisterSucceedsWithValidInformation()
     // {
     //     var mockedRepo = new Mock<IUserRepo>();
@@ -296,7 +296,7 @@ public class AuthServiceTest
     /*
      *      Update Succeeds
      */
-    [Fact]
+    // [Fact]
     // public async Task UpdateSucceedsWithVaildInformation()
     // {
     //     var mockedRepo = new Mock<IUserRepo>();
