@@ -89,7 +89,7 @@ public class AuthServiceTest
      *      Login Successes
      */
     [Fact]
-    public async void LoginWithEmailSucceedsWithValidInformation()
+    public async Task LoginWithEmailSucceedsWithValidInformation()
     {
         var mockedRepo = new Mock<IUserRepo>();
 
@@ -289,7 +289,7 @@ public class AuthServiceTest
      *      Update Succeeds
      */
     [Fact]
-    public async void UpdateSucceedsWithVaildInformation()
+    public async Task UpdateSucceedsWithVaildInformation()
     {
         var mockedRepo = new Mock<IUserRepo>();
 
