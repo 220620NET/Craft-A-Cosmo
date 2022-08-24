@@ -24,7 +24,7 @@ public class AuthServiceTest
             Email="test@test.com",
             Role="User"            
         };
-        mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).Returns(userToReturn);
+        mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).ReturnsAsync(userToReturn);
 
         AuthService auth = new(mockedRepo.Object);
 
@@ -42,7 +42,7 @@ public class AuthServiceTest
             Email = "test@test.com",
             Role = "User"
         };
-        mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).Returns(userToReturn);
+        mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).ReturnsAsync(userToReturn);
         AuthService auth = new(mockedRepo.Object);
         await Assert.ThrowsAsync<EmailNotAvailableException>(() => auth.LoginWithEmail("wrongEmail", "test"));
     }
@@ -60,7 +60,7 @@ public class AuthServiceTest
             Role = "User"
         };
 
-        mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).Returns(userToReturn);
+        mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).ReturnsAsync(userToReturn);
 
         AuthService auth = new(mockedRepo.Object);
 
@@ -79,7 +79,7 @@ public class AuthServiceTest
             Email = "test@test.com",
             Role = "User"
         };
-        mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).Returns(userToReturn);
+        mockedRepo.Setup(r => r.GetUserByUsername(userToReturn.Username)).ReturnsAsync(userToReturn);
 
         AuthService auth = new(mockedRepo.Object);
         
@@ -101,7 +101,7 @@ public class AuthServiceTest
             Email = "test@test.com",
             Role = "User"
         };
-        mockedRepo.Setup(r => r.CreateUser(newUser)).Returns(newUser);
+        mockedRepo.Setup(r => r.CreateUser(newUser)).ReturnsAsync(newUser);
 
         AuthService auth = new(mockedRepo.Object);
 
@@ -127,7 +127,7 @@ public class AuthServiceTest
             Email = "test@test.com",
             Role = "User"
         };
-        mockedRepo.Setup(r => r.CreateUser(newUser)).Returns(newUser);
+        mockedRepo.Setup(r => r.CreateUser(newUser)).ReturnsAsync(newUser);
 
         AuthService auth = new(mockedRepo.Object);
 
@@ -166,7 +166,7 @@ public class AuthServiceTest
             Role = "User"
         };
 
-        mockedRepo.Setup(r => r.CreateUser(userToAdd)).Returns(userToAdd);
+        mockedRepo.Setup(r => r.CreateUser(userToAdd)).ReturnsAsync(userToAdd);
 
         AuthService auth = new(mockedRepo.Object);
 
@@ -195,7 +195,7 @@ public class AuthServiceTest
             Role = "User"
         };
 
-        mockedRepo.Setup(r => r.CreateUser(userToAdd)).Returns(userToAdd);
+        mockedRepo.Setup(r => r.CreateUser(userToAdd)).ReturnsAsync(userToAdd);
 
         AuthService auth = new(mockedRepo.Object);
 
@@ -311,7 +311,7 @@ public class AuthServiceTest
             Role = "User"
         };
 
-        mockedRepo.Setup(r => r.CreateUser(userToAdd)).Returns(userToAdd);
+        mockedRepo.Setup(r => r.CreateUser(userToAdd)).ReturnsAsync(userToAdd);
 
         AuthService auth = new(mockedRepo.Object);
 

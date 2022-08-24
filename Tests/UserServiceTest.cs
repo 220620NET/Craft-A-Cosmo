@@ -36,41 +36,41 @@ public class UserServiceTests
     }
 
     [Fact]
-    public async Task GetUserById()
+    public async Task GetUserByUserId()
     {
         var mockUser = new Mock<IUserRepo>();
     
         User newUser = new User{
-            UserID = 2,
+            UserId = 2,
             Email = "merp@merp.com",
-            username = "merple",
+            Username = "merple",
         };
 
         mockUser.Setup(repo => repo.CreateUser(newUser)).ReturnsAsync(newUser);
-        mockUser.Setup(repo => repo.GetUserById(newUser.UserID)).ReturnsAsync(newUser);
+        mockUser.Setup(repo => repo.GetUserByUserId(newUser.UserId)).ReturnsAsync(newUser);
 
         UserService service = new UserService(mockUser.Object);
 
-        var existingUser = await service.GetUserById(newUser.UserID);
+        var existingUser = await service.GetUserByUserId(newUser.UserId);
 
-        Assert.Equal(newUser.UserID, existingUser.UserID);
+        Assert.Equal(newUser.UserId, existingUser.UserId);
     }
 
     [Fact]
     public void GetUserByUsername()
     {
-        var mockUser = new Mock<IUserRepo>
+        var mockUser = new Mock<IUserRepo>();
 
         User newUser = new User{
-            UserID = 2,
+            UserId = 2,
             Email = "merp@merp.com",
-            username = "merple",
-        }
+            Username = "merple",
+        };
         
         mockUser.Setup(repo => repo.CreateUser(newUser)).ReturnsAsync(newUser);
-        mockUser.Setup(repo => repo.GetUserById(newUser.UserID)).ReturnsAsync(newUser);
+        mockUser.Setup(repo => repo.GetUserById(newUser.UserId)).ReturnsAsync(newUser);
 
-        var existingUser = await service.GetUserById(newUser.UserID);
+        var existingUser = await service.GetUserById(newUser.UserId);
 
         Assert.Equal(newUser.username, existingUser.username);
     }

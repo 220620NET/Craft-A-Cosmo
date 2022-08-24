@@ -16,11 +16,11 @@ public class UserRepo : IUserRepo
     {
         _context = context;
     }
-    public User GetUserByEmail(string email)
+    public async Task<User> GetUserByEmail(string email)
     {
         try
         {
-            User? user = _context.Users.AsNoTracking().FirstOrDefault(user => user.Email == email);
+            User? user = await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Email == email);
             if (user == null) 
             { 
                 throw new EmailNotAvailableException(); 
@@ -42,11 +42,11 @@ public class UserRepo : IUserRepo
     /// <param name="username">A valid username</param>
     /// <returns>The requested user</returns>
     /// <exception cref="NotImplementedException">There is no user with that username</exception>
-    public User GetUserByUsername(string username)
+    public async Task<User> GetUserByUsername(string username)
     {
         try
         {
-             return _context.Users.AsNoTracking().FirstOrDefault(user => user.Username == username)!;
+             return await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Username == username)!;
            
         }
         catch (UserNotFoundException)
@@ -65,9 +65,9 @@ public class UserRepo : IUserRepo
     /// <param name="userID">The user in question</param>
     /// <returns>The requested user</returns>
     /// <exception cref="UsernameNotAvailableException">There is no user with that ID</exception>
-    public User GetUserByUserId(int userID)
+    public async Task<User> GetUserByUserId(int userID)
     {
-        User? foundUser = _context.Users.AsNoTracking().FirstOrDefault(user => user.UserId == userID);
+        User? foundUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.UserId == userID);
         if(foundUser != null) return foundUser;
         throw new UsernameNotAvailableException();
     }
@@ -76,18 +76,18 @@ public class UserRepo : IUserRepo
     /// </summary>
     /// <param name="newUser">A valid user</param>
     /// <returns>The new user</returns>
-    public User CreateUser(User newUser)
+    public async Task<User> CreateUser(User newUser)
     {
         _context.Users.Add(newUser);
         Finish();
         return newUser;
     }
 
-    public User UpdateUser(User newUser)
+    public async Task<User> UpdateUser(User newUser)
         {
             try
             {
-                User? p = _context.Users.FirstOrDefault(t => t.UserId == newUser.UserId);                
+                User? p = await _context.Users.FirstOrDefaultAsync(t => t.UserId == newUser.UserId);                
                 Finish();
                 return p ?? throw new UserNotAvailableException();
 
