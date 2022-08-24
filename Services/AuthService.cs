@@ -115,25 +115,5 @@ public class AuthService
         }
 
     }
-    public async Task<User> UpdateUser(User newUser)
-    {
-        try
-        {
-            User foundUser = await _userRepo.GetUserByUserId(newUser.UserId);
-            if (String.IsNullOrWhiteSpace(foundUser.Email))
-            {
-                throw new UserNotAvailableException(); 
-            }
-            else { return await _userRepo.UpdateUser(newUser); }
-        }
-        catch (UserNotAvailableException)
-        {
-            throw new UserNotAvailableException();
-        }
-        catch (NullReferenceException)
-        {
-            throw new UserNotAvailableException();
-        }
-
-    }
+   
 }

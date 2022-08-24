@@ -1,3 +1,51 @@
+#### UserRepo
+    public async Task<User> UpdateUser(User newUser)
+        {
+            try
+            {
+                User? p = await _context.Users.FirstOrDefaultAsync(user => user.UserId == newUser.UserId);
+                p.Username = newUser.Username!=""? newUser.Username:p.Username;
+                p.Password = newUser.Password != "" ? newUser.Password : p.Password;
+                p.Email = newUser.Email != "" ? newUser.Email : p.Email;
+                p.Role = newUser.Role != "" ? newUser.Role : p.Role;
+                Finish();
+                return p ?? throw new UserNotAvailableException();
+
+        }
+        catch (NullReferenceException)
+        {
+            throw new UserNotAvailableException();
+        }
+            catch (UserNotAvailableException)
+            {
+                throw new UserNotAvailableException();
+            }
+        }
+### AuthService
+
+     public async Task<User> UpdateUser(User newUser)
+    {
+        try
+        {
+            User foundUser = await _userRepo.GetUserByUserId(newUser.UserId);
+            if (String.IsNullOrWhiteSpace(foundUser.Email))
+            {
+                throw new UserNotAvailableException(); 
+            }
+            else { return await _userRepo.UpdateUser(newUser); }
+        }
+        catch (UserNotAvailableException)
+        {
+            throw new UserNotAvailableException();
+        }
+        catch (NullReferenceException)
+        {
+            throw new UserNotAvailableException();
+        }
+
+    }
+    
+### AuthServiceTest
     [Fact]
     public async Task UpdateFailsWithInvalidUserID()
     {
