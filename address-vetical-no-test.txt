@@ -1,0 +1,37 @@
+address controller Layer
+    [HttpPost("address")]
+    CreateAddress(Address address)[AddressNotAvailableException,InvalidInputException]
+    [HttpGet("email")]
+    GetAddressByEmail(string Email)[AddressNotAvailableException,EmailNotAvailableException]
+    [HttpGet("UserId")]
+    GetAddressByUserId(int UserId)[AddressNotAvailableException,UserNotAvaliableException]
+    [HttpGet("Username")]
+    GetAddressByUsername(string Username)[AddressNotAvailableException,UsernameNotAvailableException]
+    [HttpDelete("address")]
+    DeleteAddress(int addressId)[AddressNotAvailableException]
+
+
+address service Layer
+    CreateAddress(Address address)[AddressNotAvailableException,InvalidInputException]
+        returns bool
+    GetAddressByEmail(string Email)[AddressNotAvailableException,EmailNotAvailableException]
+        returns List<Address> object
+    GetAddressByUserId(int UserId)[AddressNotAvailableException,UserNotAvaliableException]
+        returns List<Address> object
+    GetAddressByUsername(string Username)[AddressNotAvailableException,UsernameNotAvailableException]
+        returns List<Address> object
+    DeleteAddress(int addressId)[AddressNotAvailableException]
+        return bool
+
+
+address dataaccess Layer
+    CreateAddress(Address address)[InvalidInputException]
+        returns bool
+    GetAddressByEmail(string Email)[EmailNotAvailableException]
+        returns List<Address> object
+    GetAddressByUserId(int UserId)[UserNotAvaliableException]
+        returns List<Address> object
+    GetAddressByUsername(string Username)[UsernameNotAvailableException]
+        returns List<Address> object
+    DeleteAddress(int addressId)[AddressNotAvailableException]
+        return bool
