@@ -1,7 +1,7 @@
 Auth Controller Layer:
-[HttpPost("name/{username}")]
+[HttpPost("name")]
 LoginWithUsername(User newUser)  [UsernameNotAvailableException, InvalidCredentialsException]
-[HttpPost("email/{email}")]
+[HttpPost("email ")]
 LoginWithEmail(User newUser) [EmailNotAvailableException, InvalidCredentialsException]
 [HttpPost]
 Register(User newUser) [InvalidInputException, UsernameNotAvailableException, EmailNotAvailableException]

@@ -15,8 +15,13 @@ public class AuthService
     {
         try
         {
-            User found = await _userRepo.GetUserByUsername(username);
+            User found = await _userRepo.GetUserByUsername(username!);
             return found.Password==password?found:throw new InvalidCredentialsException(); 
+        }
+
+        catch (NullReferenceException)
+        {
+            throw new UsernameNotAvailableException();
         }
         catch (UsernameNotAvailableException)
         {
@@ -31,7 +36,7 @@ public class AuthService
     {
         try
         {
-            User found = await _userRepo.GetUserByEmail(email);
+            User found = await _userRepo.GetUserByEmail(email!);
             return found.Password==password?found:throw new InvalidCredentialsException(); 
         }
         catch (EmailNotAvailableException)
@@ -42,30 +47,55 @@ public class AuthService
         {
             throw new InvalidCredentialsException();
         }
+
+        catch (NullReferenceException)
+        {
+            throw new EmailNotAvailableException();
+        }
     }
     public async Task<User> Register(User newUser)
     {  
         try
         {
-            User foundEmail = await _userRepo.GetUserByEmail(newUser.Email);
-            User foundUsername = await _userRepo.GetUserByUsername(newUser.Email);
-            if (newUser.Password==null || newUser.Email==null)
+            bool email = true;
+            bool name = true;
+            if (String.IsNullOrWhiteSpace(newUser.Password) || String.IsNullOrWhiteSpace(newUser.Email))
             {
                 throw new  InvalidInputException();
-            }
-            else if(String.IsNullOrWhiteSpace(foundEmail.Email))
+            } 
+            try
             {
-                throw new EmailNotAvailableException();
+                User foundEmail = await _userRepo.GetUserByEmail(newUser.Email);
             }
-            else if(String.IsNullOrWhiteSpace(foundUsername.Username))
+            catch (NullReferenceException)
+            {
+                email= false;
+            }
+            if (email)
+            {
+                try
+                { 
+                    User foundUser = await _userRepo.GetUserByUsername(newUser.Username);
+                }
+                catch (NullReferenceException)
+                {
+                    name = false;
+                }
+            }
+            if(!name && !email)
+            {
+                return await _userRepo.CreateUser(newUser);
+            }
+            if (name)
             {
                 throw new UsernameNotAvailableException();
             }
             else
             {
-                return await _userRepo.CreateUser(newUser);
+                throw new EmailNotAvailableException();
             }
-            }
+
+        }
         catch (EmailNotAvailableException)
         {
             throw new EmailNotAvailableException();
@@ -77,6 +107,11 @@ public class AuthService
         catch (InvalidInputException)
         {
             throw new InvalidInputException();
+        }
+
+        catch (NullReferenceException)
+        {            
+            return await _userRepo.CreateUser(newUser);
         }
 
     }
@@ -95,5 +130,10 @@ public class AuthService
         {
             throw new UserNotAvailableException();
         }
+        catch (NullReferenceException)
+        {
+            throw new UserNotAvailableException();
+        }
+
     }
 }
