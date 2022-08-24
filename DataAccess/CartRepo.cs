@@ -1,5 +1,6 @@
 using DataAccess.Interface;
 using DataAccess.Entities;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DataAccess;
@@ -13,41 +14,49 @@ public class CartRepo : ICartDAO
     _context = context;
   }
 
-  public Cart AdjustItems(Cart cartToUpdate, Item itemToAdd)
+  /// <inheritdoc />
+  public Cart AdjustItems(int cartToUpdate, Item itemToAdd)
   {
     throw new NotImplementedException();
   }
 
+  /// <inheritdoc />
   public bool ConfirmPurchase(Cart cartToPurchase)
   {
     throw new NotImplementedException();
   }
 
+  /// <inheritdoc />
   public bool CreateCart(Cart cartToCreate)
   {
     throw new NotImplementedException();
   }
 
-  public bool DeleteCart(Cart cartToDelete)
+  /// <inheritdoc />
+  public bool DeleteCart(int cartId2Delete)
   {
     throw new NotImplementedException();
   }
 
+  /// <inheritdoc />
   public Cart findCartByCartID(int cartID2Find)
   {
     throw new NotImplementedException();
   }
 
-  public Cart findCartByUserID(int userID2Find)
+  /// <inheritdoc />
+  public List<Cart> findCartsByUserID(int userID2Find)
   {
     throw new NotImplementedException();
   }
 
+  /// <inheritdoc />
   public Cart UpdateBillingAddress(Cart UpdatedBillingAddressCart)
   {
     throw new NotImplementedException();
   }
 
+  /// <inheritdoc />
   public Cart UpdateShippingAddress(Cart UpdateShipAddressCart)
   {
     throw new NotImplementedException();

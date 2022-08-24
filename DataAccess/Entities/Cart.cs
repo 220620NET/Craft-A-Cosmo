@@ -14,7 +14,7 @@ namespace DataAccess.Entities
         public int ShippingAddressFk { get; set; }
         public int BillingAddressFk { get; set; }
         public int UserIdFk { get; set; }
-        public DateTime? PurchaseTime { get; set; }
+        public DateTime? PurchaseTime { get; set; } //if null means not purchased
         public string? ShippingNote { get; set; }
 
         public virtual Address BillingAddressFkNavigation { get; set; } = null!;

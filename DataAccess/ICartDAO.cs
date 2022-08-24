@@ -28,19 +28,19 @@ public interface ICartDAO
     public Cart UpdateShippingAddress(Cart UpdateShipAddressCart);
 
     /// <summary>
-    /// Deletes a cart with the matching cart object.
+    /// Deletes a cart with the corresponding cart id.
     /// </summary>
-    /// <param name="cartToDelete">The cart to delete</param>
+    /// <param name="cartId2Delete">The cart id to delete</param>
     /// <returns>Return true if the cart deleted in db, if not false.</returns>
-    public bool DeleteCart(Cart cartToDelete);
+    public bool DeleteCart(int cartId2Delete);
 
     /// <summary>
     /// Adds/removes a SPECIFIC amount of items in/to cart.
     /// </summary>
-    /// <param name="cartToUpdate">The number of items to be added or subtracted from existing</param>
+    /// <param name="cartId2Update">The number of items to be added or subtracted from existing</param>
     /// <param name="itemToAdd">The item to be added/removed from the cart</param>
     /// <returns>The adjusted cart object</returns>
-    public Cart AdjustItems(Cart cartToUpdate, Item itemToAdd);
+    public Cart AdjustItems(int cartId2Update, Item itemToAdd);
 
     /// <summary>
     /// Updates the cart's date to reflect when cart was purchased.
@@ -63,5 +63,5 @@ public interface ICartDAO
     /// <param name="userID2Find">The user ID you are trying to use</param>
     /// <returns>The cart if found</returns>
     /// <exception cref="CartNotFoundException">Occurs if no cart matches the given cart ID object</exception>
-    public Cart findCartByUserID(int userID2Find);
+    public List<Cart> findCartsByUserID(int userID2Find);
 }
