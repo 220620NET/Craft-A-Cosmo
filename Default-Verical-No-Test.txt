@@ -1,12 +1,19 @@
 Auth Controller Layer:
+[HttpPost("name/{username}")]
 LoginWithUsername(User newUser)  [UsernameNotAvailableException, InvalidCredentialsException]
+[HttpPost("email/{email}")]
 LoginWithEmail(User newUser) [EmailNotAvailableException, InvalidCredentialsException]
+[HttpPost]
 Register(User newUser) [InvalidInputException, UsernameNotAvailableException, EmailNotAvailableException]
+[HttpPut]
 UpdateUser(User newUser) [UserNotAvaliableException]
 
 User Controller Layer:
+[HttpGet("email/{email}")]
 GetUserByEmail(string email) [EmailNotAvailableException]
+[HttpGet("username/{username}")]
 GetUserByUsername(string username) [UsernameNotAvailableException]
+[HttpGet("{userID}")]
 GetUserByUserId(int userID) [UserNotAvaliableException]
 
 Auth Service Layer:

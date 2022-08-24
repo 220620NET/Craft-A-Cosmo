@@ -1,0 +1,346 @@
+[33mcommit 19e06d2e9acdce35a2d82fd5624c49045da1fe3a[m[33m ([m[1;36mHEAD -> [m[1;32mLogin[m[33m)[m
+Merge: c273c31 5b641e0
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Wed Aug 24 09:11:41 2022 -0400
+
+    Merge branch 'Login' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit c273c31bd00b7475d3b0cf5eaec348a132b7fcdc[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Wed Aug 24 09:11:16 2022 -0400
+
+    web api workable now
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 5b641e07151c374fed2673725e321f1942e6d0c5[m
+Merge: a290e97 a5a1473
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 22:18:22 2022 -0700
+
+    Merge branch 'Login' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit a290e972096562682d9676362ba71c8dbc9d8f0c[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 22:14:21 2022 -0700
+
+    auth tests finished?
+
+[33mcommit 5fb88308934f4a21f188b3b2df69fa06c40a0bd8[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 22:09:52 2022 -0700
+
+    auth tests almost finished
+
+[33mcommit a5a1473c4bb51752e6682aac7e7fbb5f003c52b5[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 20:41:28 2022 -0400
+
+    Exceptions
+
+[33mcommit f5170120efdaba0fac1b316d5ba51c38a522365c[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 20:40:44 2022 -0400
+
+    Fixing Exceptions and some repo stuff
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 038a5e2f045fce06dc6eaecf6e6199024096dfbb[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 19:48:08 2022 -0400
+
+    README
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 325aebd2aadd1883687951fc10a9c5e3b1a3453e[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 14:46:43 2022 -0700
+
+    some more atuh tests
+
+[33mcommit 5347671d6f2ff231603bbe9e04590f070ed4ee31[m
+Author: kabiru <ibrahimkabiru29@gmail.com>
+Date:   Tue Aug 23 17:43:43 2022 -0400
+
+    DataAccess
+    
+    Signed-off-by: kabiru <ibrahimkabiru29@gmail.com>
+
+[33mcommit 8b2465c4de6981449bd56039a171ad8817586f5f[m
+Author: oddishhorde <91993779+oddishhorde@users.noreply.github.com>
+Date:   Tue Aug 23 16:25:48 2022 -0500
+
+    added exceptions
+
+[33mcommit 830d5e6c4f8e3c601e9da4d0ba6d0caaf9a30f7b[m
+Merge: 180f38d 233422e
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 17:23:21 2022 -0400
+
+    Merge branch 'Login' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit 180f38d27664d78e2c9788cccd9071d1a0bbe910[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 17:23:05 2022 -0400
+
+    AuthServiceTesting
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 233422efe723b7ee654dcc4f55b3ee1730009ad4[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 14:22:03 2022 -0700
+
+    exception corrections to authservices
+
+[33mcommit bed610af48c95a83be62b05f7cab9aa2d10a8fcf[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 14:13:22 2022 -0700
+
+    async authservices
+
+[33mcommit d9629ed2f0701732d525f2912a75f36803bfd4f7[m
+Merge: bc8a9cd 9a55e1f
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 14:08:28 2022 -0700
+
+    Merge branch 'Login' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit bc8a9cd2d68c0dce8c515a129299ecb80e84980b[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 14:07:47 2022 -0700
+
+    auth services tentative
+
+[33mcommit 9a55e1f3498e96d0839e14d0787c81dfa2cac6b4[m
+Author: oddishhorde <91993779+oddishhorde@users.noreply.github.com>
+Date:   Tue Aug 23 16:03:17 2022 -0500
+
+    added userservice and relevant tests
+
+[33mcommit 57925a0c8af7e99c93e5de356d3ee40cb074216c[m
+Merge: 3431d2c 159d130
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 13:34:04 2022 -0700
+
+    Merge branch 'Login' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit 159d130ecab5782ff7d84ff15ba43fdd3ff45bd8[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 16:33:41 2022 -0400
+
+    AuthService.cs started
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 55dfe170a649367556fa32e1e0881cb93968c125[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 16:14:03 2022 -0400
+
+    Files
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 3431d2c0c0d0f9585c0786f686011cad6f74fd0b[m
+Merge: 89ccf7b 40ebe34
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 13:09:19 2022 -0700
+
+    Merge branch 'Login' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit 40ebe34ad7bffa271224d628e37ff213cfbc3702[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 16:08:45 2022 -0400
+
+    Breakdown of Auth Vertical
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 89ccf7b1b5d8f1f0cb6a45dbaca79f81a016d0a0[m
+Merge: c3c9b7d 78da2f4
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 12:23:52 2022 -0700
+
+    Merge branch 'Login' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit c3c9b7d6ca849be3e172064ec29f91fe355b7eb3[m
+Merge: 111e752 9637f0c
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 12:23:41 2022 -0700
+
+    Merge branch 'main' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit 78da2f4247dcf3f051b1cca9caf4cd7830154d46[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 15:23:02 2022 -0400
+
+    Login
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 6c8f1e7812b3894b5d39508ba735cb5adfc46cac[m
+Merge: cdd63b4 9637f0c
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 15:10:18 2022 -0400
+
+    Merge branch 'main' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit 9637f0c6370aacec0df467182bfa72665bcc2743[m
+Author: TheFakeLorLyons <lorelailyons@protonmail.com>
+Date:   Tue Aug 23 15:07:49 2022 -0400
+
+    Look mom, I did it!
+
+[33mcommit 111e752a91d5c71dd69b26ad4cfa591d8f317fc0[m
+Merge: 0c89190 4ee8471
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 11:05:27 2022 -0700
+
+    Merge branch 'main' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit 4ee8471d9401947d8a96e06991b91ca076276be6[m
+Author: TheFakeLorLyons <lorelailyons@protonmail.com>
+Date:   Tue Aug 23 13:35:58 2022 -0400
+
+    One more change to the tables.
+
+[33mcommit 8e475ef5efd24ccfe62348aa076f1b21efdc0f52[m
+Author: TheFakeLorLyons <lorelailyons@protonmail.com>
+Date:   Tue Aug 23 13:24:18 2022 -0400
+
+    The last upload was not the most up-to-date version of the DB. This has the current tables we have created.
+
+[33mcommit fc1394e8acaba84d7b815bfa5cfbff7f2492c6b1[m
+Author: TheFakeLorLyons <lorelailyons@protonmail.com>
+Date:   Tue Aug 23 13:20:23 2022 -0400
+
+    Adding the current tables to the repository.
+
+[33mcommit 0c891902e5f1e1b109c52fb397ef464b5bab45b0[m
+Merge: 8d5a803 cdd63b4
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 09:46:55 2022 -0700
+
+    Merge branch 'Login' of https://github.com/220620NET/Craft-A-Cosmo into Login
+
+[33mcommit 8d5a80341d6024add9d103f38153cda869fbc484[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 09:45:14 2022 -0700
+
+    tslib
+
+[33mcommit cdd63b4a30c437dc2f482529c1a27284ae10312b[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 12:44:10 2022 -0400
+
+    Login stuck
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit ea32c5121b9a625167d220d33ba0e992d8048b4b[m
+Merge: 32e6ce4 5b4fbc9
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 11:52:42 2022 -0400
+
+    Merge pull request #1 from 220620NET/login
+    
+    Login
+
+[33mcommit 5b4fbc9067317b94f85e93d985dbd1aafd946492[m[33m ([m[1;31morigin/login[m[33m)[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 08:50:51 2022 -0700
+
+    login button
+
+[33mcommit 32e6ce460720f109eaf9fd26e075d97f1e25a07e[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 11:47:47 2022 -0400
+
+    README.md
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 372cea80b4872056dfeb14ba91100bd0f9b80970[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 08:47:03 2022 -0700
+
+    register form
+
+[33mcommit 7380d0a0223ab28cb949100ec456bcecc02d8e9c[m
+Author: terriblea <kishanp575@gmail.com>
+Date:   Tue Aug 23 08:38:58 2022 -0700
+
+    llogin component
+
+[33mcommit 23af90b21e85525b0418398a405b580f37f2239a[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Tue Aug 23 11:21:22 2022 -0400
+
+    Login branch
+
+[33mcommit 9430c091afa9607cfa977d4c5ff9bd5bb2a9e518[m[33m ([m[1;32mLogn[m[33m)[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Mon Aug 22 21:52:29 2022 -0400
+
+    Angular started
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 97dfae1228b7bff2066b0b5f07fbc015c7db4bff[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Mon Aug 22 17:26:42 2022 -0400
+
+    README
+
+[33mcommit 64954c161bf123c64b0f7addb14dcd4d08f804cf[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Mon Aug 22 16:35:33 2022 -0400
+
+    Picture
+
+[33mcommit 949cf093c9a52f3b86218967c91cbe1800fb0951[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Mon Aug 22 16:34:54 2022 -0400
+
+    Fix README
+
+[33mcommit a417ec41ce776dda725241188600574e15c955c5[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Mon Aug 22 16:32:50 2022 -0400
+
+    README
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit d4d08b05342c5b99ac652244556f185fdf11f82e[m
+Merge: 2822c1d 0bb546b
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Mon Aug 22 15:04:58 2022 -0400
+
+    Merge branch 'main' of https://github.com/220620NET/Craft-A-Cosmo
+
+[33mcommit 2822c1d78c4ce2e395ad74ea469366002c83e917[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Mon Aug 22 15:04:39 2022 -0400
+
+    SLN
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>
+
+[33mcommit 0bb546b058a1fb318685ba86553899708edddbc0[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Mon Aug 22 15:00:04 2022 -0400
+
+    Create CI.yml
+    
+    CI
+
+[33mcommit 41a74a06a866d5887fd42885f2f8b33560bce837[m
+Author: krisholl <krisholl2022@gmail.com>
+Date:   Mon Aug 22 14:49:32 2022 -0400
+
+    Priming project
+    
+    Signed-off-by: krisholl <krisholl2022@gmail.com>

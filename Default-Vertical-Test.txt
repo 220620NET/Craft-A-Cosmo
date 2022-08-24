@@ -1,25 +1,25 @@
 Auth Controller Layer Testing: 
-LoginWithUsername(User)
+LoginWithUsername(User) [HttpPost("name/{username}")]
 	- 1 For each catch
 	- 1 for success
-LoginWithEmail(User)
+LoginWithEmail(User) [HttpPost("email/{email}")]
 	- 1 For each catch
 	- 1 for success
-Register(User)
+Register(User) [HttpPost]
 	- 1 For each catch
 	- 1 for success
-UpdateUser(User)
+UpdateUser(User) [HttpPut]
 	- 1 For each catch
 	- 1 for success
 
 User Controller Layer: 
-GetUserByEmail(string)
+GetUserByEmail(string) [HttpGet("email/{email}")]
 	- 1 For each catch
 	- 1 for success
-GetUserByUsername(string)
+GetUserByUsername(string) [HttpGet("username/{username}")]
 	- 1 For each catch
 	- 1 for success
-GetUserByUserId(int)
+GetUserByUserId(int) [HttpGet("{userID}")]
 	- 1 For each catch
 	- 1 for success
 
