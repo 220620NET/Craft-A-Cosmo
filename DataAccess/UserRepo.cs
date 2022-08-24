@@ -79,7 +79,7 @@ public class UserRepo : IUserRepo
         return newUser;
     }
 
-    public User UpdateUser(user newUser)
+    public User UpdateUser(User newUser)
         {
             try
             {

@@ -268,7 +268,28 @@ public class AuthServiceTest
      *      Update Fails
      */
     [Fact]
-    public void UpdateFailsWithInvalidUserID()
+    public async Task UpdateFailsWithInvalidUserID()
+    {
+        var mockedRepo = new Mock<IUserRepo>();
+
+        User userToTest = new()
+        {
+            UserId = 1,
+            Username = "test2",
+            Password = "test",
+            Email = "test@test.com",
+            Role = "User"
+        };
+
+        AuthService auth = new(mockedRepo);
+
+        await Assert.ThrowsAsync<UserNotAvailableException>(() => auth.UpdateUser(userToTest));
+    }
+    /*
+     *      Update Succeeds
+     */
+    [Fact]
+    public async void UpdateSucceedsWithVaildInformation()
     {
         var mockedRepo = new Mock<IUserRepo>();
 
@@ -285,7 +306,7 @@ public class AuthServiceTest
         {
             UserId = 1,
             Username = "test2",
-            Password = "test",
+            Password = "test2",
             Email = "test@test.com",
             Role = "User"
         };
@@ -294,14 +315,12 @@ public class AuthServiceTest
 
         AuthService auth = new(mockedRepo);
 
-        await Assert.ThrowsAsync<EmailNotAvailableException>(() => auth.Register(userToTest));
-    }
-    /*
-     *      Update Succeeds
-     */
-    [Fact]
-    public void UpdateSucceedsWithVaildInformation()
-    {
+        User updatedUser = await auth.UpdateUser(userToTest);
 
+        mockedRepo.Verify(r => r.updatedUser(userToTest), Times.Once());
+
+        Assert.NotNull(updatedUser);
+        Assert.Equal(updatedUser.Username, userToTest.Username);
+        Assert.Equal(updatedUser.Password, userToTest.Password);
     }
 }
