@@ -87,9 +87,9 @@ public class AuthService
             User foundUser = await _userRepo.GetUserByUserId(newUser.UserId);
             if (String.IsNullOrWhiteSpace(foundUser.Email))
             {
-                return await _userRepo.UpdateUser(newUser);
+                throw new UserNotAvailableException(); 
             }
-            else { throw new UserNotAvailableException(); }
+            else { return await _userRepo.UpdateUser(newUser); }
         }
         catch (UserNotAvailableException)
         {
