@@ -57,7 +57,7 @@ public class UserServiceTests
     }
 
     [Fact]
-    public void GetUserByUsername()
+    public async Task GetUserByUsername()
     {
         var mockUser = new Mock<IUserRepo>();
 
@@ -68,10 +68,13 @@ public class UserServiceTests
         };
         
         mockUser.Setup(repo => repo.CreateUser(newUser)).ReturnsAsync(newUser);
-        mockUser.Setup(repo => repo.GetUserById(newUser.UserId)).ReturnsAsync(newUser);
+        mockUser.Setup(repo => repo.GetUserByUsername(newUser.Username)).ReturnsAsync(newUser);
 
-        var existingUser = await service.GetUserById(newUser.UserId);
+        UserService service = new UserService(mockUser.Object);
 
-        Assert.Equal(newUser.username, existingUser.username);
+
+        var existingUser = await service.GetUserByUsername(newUser.Username);
+
+        Assert.Equal(newUser.Username, existingUser.Username);
     }
 }
