@@ -59,7 +59,7 @@ public class AuthService
         {
             bool email = true;
             bool name = true;
-            if (newUser.Password==null || newUser.Email==null)
+            if (String.IsNullOrWhiteSpace(newUser.Password) || String.IsNullOrWhiteSpace(newUser.Email))
             {
                 throw new  InvalidInputException();
             } 
@@ -71,7 +71,7 @@ public class AuthService
             {
                 email= false;
             }
-            finally
+            if (email)
             {
                 try
                 { 
@@ -86,7 +86,7 @@ public class AuthService
             {
                 return await _userRepo.CreateUser(newUser);
             }
-            else if (name&&!email)
+            if (name)
             {
                 throw new UsernameNotAvailableException();
             }
