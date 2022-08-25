@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<p3dbContext>(options => options.UseSqlServer("Server=tcp:220620p3.database.windows.net,1433;Initial Catalog=p3db;Persist Security Info=False;User ID=p3admin;Password=P@ssw0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+builder.Services.AddDbContext<p3dbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("P3DB")));
 builder.Services.AddScoped<ICartDAO, CartRepo>();
 builder.Services.AddScoped<CartServices>();
 

@@ -11,7 +11,7 @@ public interface ICartDAO
     /// </summary>
     /// <param name="cartToCreate">The cart we want to create.</param>
     /// <returns>Returns true if cart is created, if not false.</returns>
-    public bool CreateCart(Cart cartToCreate);
+    public Cart CreateCart(Cart cartToCreate);
 
     /// <summary>
     /// Updates an existing cart object's billing address.
