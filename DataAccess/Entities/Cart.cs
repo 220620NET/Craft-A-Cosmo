@@ -17,9 +17,14 @@ namespace DataAccess.Entities
         public DateTime? PurchaseTime { get; set; } //if null means not purchased
         public string? ShippingNote { get; set; }
 
+
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual Address BillingAddressFkNavigation { get; set; } = null!;
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual Address ShippingAddressFkNavigation { get; set; } = null!;
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual User UserIdFkNavigation { get; set; } = null!;
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<Item> Items { get; set; }
     }
 }
