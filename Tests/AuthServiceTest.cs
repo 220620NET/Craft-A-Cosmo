@@ -241,7 +241,7 @@ public class AuthServiceTest
     /*
      *      Register Succeeds
      */
-    [Fact]
+    /*[Fact]
     public async Task RegisterSucceedsWithValidInformation()
     {
         var mockedRepo = new Mock<IUserRepo>();
@@ -261,7 +261,7 @@ public class AuthServiceTest
         Assert.NotNull(newUser);
         Assert.Equal(newUser.Username, userToTest.Username);
         Assert.Equal(newUser.Password, userToTest.Password);
-    }
+    }*/
     /*
      *      Update Fails
      */
