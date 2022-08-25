@@ -9,6 +9,7 @@ namespace DataAccess.Entities
         {
             Addresses = new HashSet<Address>();
             Carts = new HashSet<Cart>();
+            SavedAddresses = new HashSet<SavedAddress>();
         }
 
         public int UserId { get; set; }
@@ -17,7 +18,11 @@ namespace DataAccess.Entities
         public string Email { get; set; } = null!;
         public string Role { get; set; } = null!;
 
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<Address> Addresses { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<Cart> Carts { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual ICollection<SavedAddress> SavedAddresses { get; set; }
     }
 }

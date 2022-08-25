@@ -97,7 +97,7 @@ public class CartRepo : ICartDAO
     {
       throw new CartNotFoundException("Cart with this ID does not exist");
     }
-    Cart2Find.BillingAddressFk = UpdatedBillingAddressCart.BillingAddressFk;
+    Cart2Find.BillingAddressIdFk = UpdatedBillingAddressCart.BillingAddressIdFk;
     _context.SaveChanges(); //persist the change
     _context.ChangeTracker.Clear(); //clear the tracker for the next person
     return Cart2Find;
@@ -111,7 +111,7 @@ public class CartRepo : ICartDAO
     {
       throw new CartNotFoundException("Cart with this ID does not exist");
     }
-    Cart2Find.BillingAddressFk = UpdateShipAddressCart.ShippingAddressFk;
+    Cart2Find.BillingAddressIdFk = UpdateShipAddressCart.ShippingAddressIdFk;
     _context.SaveChanges(); //persist the change
     _context.ChangeTracker.Clear(); //clear the tracker for the next person
     return Cart2Find;

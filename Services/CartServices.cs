@@ -24,8 +24,8 @@ public class CartServices
         Cart cart = new Cart()
         {
             UserIdFk = UserIdFk,
-            ShippingAddressFk = ShippingAddressFk,
-            BillingAddressFk = BillingAddressFk,
+            ShippingAddressIdFk = ShippingAddressFk,
+            BillingAddressIdFk = BillingAddressFk,
         };
 
         try
@@ -47,7 +47,7 @@ public class CartServices
     public Cart UpdateBillingAddress(int UpdatedBillingAddressFk, int CartId)
     {
         Cart cart2Update = _cart.findCartByCartID(CartId);
-        cart2Update.BillingAddressFk = UpdatedBillingAddressFk;
+        cart2Update.BillingAddressIdFk = UpdatedBillingAddressFk;
         try
         {
             return _cart.UpdateBillingAddress(cart2Update);
@@ -66,7 +66,7 @@ public class CartServices
     public Cart UpdateShippingAddress(int UpdateShipAddressFk, int CartId)
     {
         Cart cart2Update = _cart.findCartByCartID(CartId);
-        cart2Update.ShippingAddressFk = UpdateShipAddressFk;
+        cart2Update.ShippingAddressIdFk = UpdateShipAddressFk;
         try
         {
             return _cart.UpdateShippingAddress(cart2Update);
