@@ -102,11 +102,11 @@ public class UserRepo : IUserRepo
         return newUser;
     }
 
-    public async Task<User> UpdateUser(User newUser)
+        public async Task<User> UpdateUser(User newUser)
         {
             try
             {
-                User? p = await _context.Users.FirstOrDefaultAsync(user => user.UserId == newUser.UserId);
+                User? p =  _context.Users.FirstOrDefault(user => user.UserId == newUser.UserId); 
                 p.Username = newUser.Username!=""? newUser.Username:p.Username;
                 p.Password = newUser.Password != "" ? newUser.Password : p.Password;
                 p.Email = newUser.Email != "" ? newUser.Email : p.Email;
@@ -114,11 +114,11 @@ public class UserRepo : IUserRepo
                 Finish();
                 return p ?? throw new UserNotAvailableException();
 
-        }
-        catch (NullReferenceException)
-        {
-            throw new UserNotAvailableException();
-        }
+            }
+            catch (NullReferenceException)
+            {
+                throw new UserNotAvailableException();
+            }
             catch (UserNotAvailableException)
             {
                 throw new UserNotAvailableException();

@@ -33,3 +33,9 @@ GetUserByUsername(string username)[UsernameNotAvailableException]
 GetUserByUserId(int userID)[UserNotAvaliableException]
 CreateUser(User newUser) [InvalidInputException, UsernameNotAvailableException, EmailNotAvailableException]
 UpdateUser(User newUser) [UserNotAvaliableException]
+
+Finish Sprint tomorrow after board meeting
+meet at noon to merge and migrate to new org
+rescaffold
+pull
+Next Sprint
