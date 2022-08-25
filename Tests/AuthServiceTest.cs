@@ -241,31 +241,27 @@ public class AuthServiceTest
     /*
      *      Register Succeeds
      */
-    // [Fact]
-    // public async Task RegisterSucceedsWithValidInformation()
-    // {
-    //     var mockedRepo = new Mock<IUserRepo>();
+    [Fact]
+    public async Task RegisterSucceedsWithValidInformation()
+    {
+        var mockedRepo = new Mock<IUserRepo>();
 
-    //     User userToTest = new()
-    //     {
-    //         UserId = 1,
-    //         Username = "test",
-    //         Password = "test",
-    //         Email = "test@test.com",
-    //         Role = "User"
-    //     };
-    //     User userToReturn = null;
-    //     mockedRepo.Setup(r=>r.GetUserByEmail(userToTest.Email)).ReturnsAsync(userToReturn);
-    //     mockedRepo.Setup(r=>r.GetUserByUsername(userToTest.Username)).ReturnsAsync(userToReturn);
-    //     AuthService auth = new(mockedRepo.Object);
-    //     User newUser = await  auth.Register(userToTest);
+        User userToTest = new()
+        { 
+            Username = "test",
+            Password = "test",
+            Email = "test@test.com",
+            Role = "User"
+        }; 
+        AuthService auth = new(mockedRepo.Object);
+        User newUser = await  auth.Register(userToTest);
 
-    //     mockedRepo.Verify(r => r.GetUserByEmail(userToTest.Email), Times.Once()); 
+        mockedRepo.Verify(r => r.GetUserByEmail(userToTest.Email), Times.Once()); 
 
-    //     Assert.NotNull(newUser);
-    //     Assert.Equal(newUser.Username, userToTest.Username);
-    //     Assert.Equal(newUser.Password, userToTest.Password);
-    // }
+        Assert.NotNull(newUser);
+        Assert.Equal(newUser.Username, userToTest.Username);
+        Assert.Equal(newUser.Password, userToTest.Password);
+    }
     /*
      *      Update Fails
      */

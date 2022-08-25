@@ -15,4 +15,25 @@ public partial class User{
         
         this.Role = Role;
     }
+    public User(  string? Username, string Password, string Email, string Role)
+    { 
+
+        this.Username = Username;
+
+        this.Password = Password;
+
+        this.Email = Email;
+
+        this.Role = Role;
+    }
+    public User(string? Username, string Password, string Email )
+    {
+
+        this.Username = Username;
+
+        this.Password = Password;
+
+        this.Email = Email;
+         
+    }
 }

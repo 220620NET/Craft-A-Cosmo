@@ -21,11 +21,8 @@ public class UserRepo : IUserRepo
         try
         {
             User? user = await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Email == email);
-            if (user == null) 
-            { 
-                throw new EmailNotAvailableException(); 
-            }
-            return user!;           
+             
+            return user;           
         }
         catch (NullReferenceException)
         {
@@ -47,10 +44,7 @@ public class UserRepo : IUserRepo
         try
         {
             User? found = await _context.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Username == username);
-            if (found == null)
-            {
-                throw new UsernameNotAvailableException();
-            }
+             
             return  found;
            
         } 
