@@ -41,7 +41,7 @@ public class ProductServices
             }
         }
 
-    public List<Product> GetProductDescription()
+  /*  public List<Product> GetProductDescription()
     {
         try{
 
@@ -49,22 +49,27 @@ public class ProductServices
             if
 
             }
-    }
-    /*
-    public List<Product> GetProductByCategory(string category)
-    {
-        try
-        {
-            Products = _productsRepo.GetProductsByCategory(category);
-            if(category == null)
-            {
-                throw new ResourceNotFound();
-            }
-            return _productsRepo.GetProductsByCategory(category);
-        }
-        catch (ResourceNotFound)
-        {
-            throw;
-        }
     }*/
+
+    public List<Product> GetProductsByCategory(string category)
+
+    {
+        List<Product> productList = _productsRepo.GetProductsByCategory(category);
+        if(productList == null)
+        {
+            throw new ResourceNotFound();
+        }
+        return _productsRepo.GetProductsByCategory(category);
+    }
+    
+    public List<Product> GetProductsByPriceRange(int priceMin, int priceMax)
+    {
+        List<Product> productList = _productsRepo.GetProductsByPriceRange(priceMin, priceMax);
+        if(productList == null)
+        {
+            throw new ResourceNotFound();
+        }
+
+        return _productsRepo.GetProductsByPriceRange(priceMin, priceMax);
+    }
 }

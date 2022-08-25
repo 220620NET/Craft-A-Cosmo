@@ -6,6 +6,9 @@ using DataAccess;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Serialization;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,13 @@ builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", OptionsBuilderConfigurationExtensions => OptionsBuilderConfigurationExtensions.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
+
+/* builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+    .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
+    = new DefaultContractResolver());
+*/
 
 
 builder.Services.AddDbContext<p3dbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("p3dbContext")));
@@ -50,5 +60,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Photos")),
+    RequestPath="/Photos"
+});
 
 app.Run();

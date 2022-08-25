@@ -10,11 +10,10 @@ public interface IProductsDAO
     public bool AddProduct();
     public bool DeleteProducts();
     public Product EditProduct(Product product);
-    public List<Product> GetProductDescription(string userInput);
-    public Product GetProductPrice(int productId);
-    public bool GetProductName();
-    public bool GetProductImage();
-    public bool GetProductByCategory();
-    public bool GetProductsByPriceRange();
+    //public List<Product> GetProductDescription(string userInput);
+    //public Product GetProductPrice(int productId);
     public Product GetProductByProductId(int productId);
+    public List<Product> GetProductsByCategory(string category);
+    public List<Product> GetProductsByPriceRange(int priceMin, int priceMax);
+
 }

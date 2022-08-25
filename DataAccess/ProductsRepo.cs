@@ -58,7 +58,7 @@ public class ProductsRepo : IProductsDAO
 
         }    
 
-    public List<Product> GetProductDescription(string userInput)
+  /*  public List<Product> GetProductDescription(string userInput)
     {
         List<Product> productList = new List<Product>();
 
@@ -73,14 +73,14 @@ public class ProductsRepo : IProductsDAO
         }
 
         return productList;
-    }
+    }*/
     //search * products where description includes "user inputted text"
 
-    public Product GetProductPrice(int productId)
+  /*  public Product GetProductPrice(int productId)
     {
         Product productInstance = _context.Find(productId);
         return productInstance.Price;
-    }
+    }*/
 
     public bool GetProductName()
     {
@@ -92,14 +92,64 @@ public class ProductsRepo : IProductsDAO
         return false;
     }
 
-    public bool GetProductByCategory()
+    public List<Product> GetProductsByCategory(string category)
     {
-        return false;
+        List<Product> productList = new List<Product>();
+
+        if(category == null)
+        {
+            throw new ResourceNotFound();
+        }
+
+        Category categoryInstance = _context.Categories.FirstOrDefault(cat => cat.CategoryName == category) ?? throw new CategoryNotFound();         
+
+        IEnumerable<Product> productQuery =
+                (from Products in _context.Products
+                where Products.CategoryIdFk == categoryInstance.CategoryId
+                select Products).ToList<Product>();
+
+        if(productQuery.Count() < 1)
+        {
+            throw new NoProductsMatchThisDescription();
+        }
+
+        foreach(Product product in productQuery)
+        {
+            productList.Add(product);
+        }
+
+        return productList;
     }     
 
-    public bool GetProductsByPriceRange()
+    public List<Product> GetProductsByPriceRange(int priceMin, int priceMax)
     {
-        return false;
-    }        
-     
+        List<Product> productList = new List<Product>();
+
+        if(priceMin < 0)
+        {
+            throw new NoNegatives();
+        }
+
+        if(priceMin > priceMax)
+        {
+            throw new IncorrectEntry();
+        }
+
+        IEnumerable<Product> productQuery =
+                (from Products in _context.Products
+                where Products.Price > priceMin && Products.Price < priceMax
+                select Products).ToList<Product>();
+
+        if(productQuery.Count() < 1)
+        {
+            throw new NoProductsMatchThisDescription();
+        }
+
+        foreach(Product product in productQuery)
+        {
+            productList.Add(product);
+        }
+
+        return productList;
+    }               
 }
