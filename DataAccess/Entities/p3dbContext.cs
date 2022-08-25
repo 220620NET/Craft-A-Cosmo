@@ -23,6 +23,7 @@ namespace DataAccess.Entities
         public virtual DbSet<Item> Items { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
         public virtual DbSet<ProductOption> ProductOptions { get; set; } = null!;
+        public virtual DbSet<SavedAddress> SavedAddresses { get; set; } = null!;
         public virtual DbSet<State> States { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<Zipcode> Zipcodes { get; set; } = null!;
@@ -52,24 +53,24 @@ namespace DataAccess.Entities
                     .WithMany(p => p.Addresses)
                     .HasForeignKey(d => d.CityFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Address__city_fk__336AA144");
+                    .HasConstraintName("FK__Address__city_fk__7167D3BD");
 
                 entity.HasOne(d => d.StateFkNavigation)
                     .WithMany(p => p.Addresses)
                     .HasForeignKey(d => d.StateFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Address__state_f__345EC57D");
+                    .HasConstraintName("FK__Address__state_f__725BF7F6");
 
                 entity.HasOne(d => d.UserIdFkNavigation)
                     .WithMany(p => p.Addresses)
                     .HasForeignKey(d => d.UserIdFk)
-                    .HasConstraintName("FK__Address__userId___318258D2");
+                    .HasConstraintName("FK__Address__userId___6F7F8B4B");
 
                 entity.HasOne(d => d.ZipcodeFkNavigation)
                     .WithMany(p => p.Addresses)
                     .HasForeignKey(d => d.ZipcodeFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Address__zipcode__32767D0B");
+                    .HasConstraintName("FK__Address__zipcode__7073AF84");
             });
 
             modelBuilder.Entity<Cart>(entity =>
@@ -78,13 +79,13 @@ namespace DataAccess.Entities
 
                 entity.Property(e => e.CartId).HasColumnName("cartId");
 
-                entity.Property(e => e.BillingAddressFk).HasColumnName("billingAddress_fk");
+                entity.Property(e => e.BillingAddressIdFk).HasColumnName("billingAddressId_fk");
 
                 entity.Property(e => e.PurchaseTime)
                     .HasColumnType("datetime")
                     .HasColumnName("purchaseTime");
 
-                entity.Property(e => e.ShippingAddressFk).HasColumnName("shippingAddress_fk");
+                entity.Property(e => e.ShippingAddressIdFk).HasColumnName("shippingAddressId_fk");
 
                 entity.Property(e => e.ShippingNote)
                     .HasMaxLength(50)
@@ -93,23 +94,23 @@ namespace DataAccess.Entities
 
                 entity.Property(e => e.UserIdFk).HasColumnName("userId_fk");
 
-                entity.HasOne(d => d.BillingAddressFkNavigation)
-                    .WithMany(p => p.CartBillingAddressFkNavigations)
-                    .HasForeignKey(d => d.BillingAddressFk)
+                entity.HasOne(d => d.BillingAddressIdFkNavigation)
+                    .WithMany(p => p.CartBillingAddressIdFkNavigations)
+                    .HasForeignKey(d => d.BillingAddressIdFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__cart__billingAdd__5B78929E");
+                    .HasConstraintName("FK__cart__billingAdd__79FD19BE");
 
-                entity.HasOne(d => d.ShippingAddressFkNavigation)
-                    .WithMany(p => p.CartShippingAddressFkNavigations)
-                    .HasForeignKey(d => d.ShippingAddressFk)
+                entity.HasOne(d => d.ShippingAddressIdFkNavigation)
+                    .WithMany(p => p.CartShippingAddressIdFkNavigations)
+                    .HasForeignKey(d => d.ShippingAddressIdFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__cart__shippingAd__5A846E65");
+                    .HasConstraintName("FK__cart__shippingAd__7908F585");
 
                 entity.HasOne(d => d.UserIdFkNavigation)
                     .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.UserIdFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__cart__userId_fk__5C6CB6D7");
+                    .HasConstraintName("FK__cart__userId_fk__7AF13DF7");
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -160,13 +161,13 @@ namespace DataAccess.Entities
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => d.CartFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__items__cart_fk__67DE6983");
+                    .HasConstraintName("FK__items__cart_fk__0C1BC9F9");
 
                 entity.HasOne(d => d.ProductIdFkNavigation)
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => d.ProductIdFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__items__productId__66EA454A");
+                    .HasConstraintName("FK__items__productId__0B27A5C0");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -188,11 +189,6 @@ namespace DataAccess.Entities
                     .HasColumnType("money")
                     .HasColumnName("price");
 
-                entity.Property(e => e.ProductCol)
-                    .HasMaxLength(45)
-                    .IsUnicode(false)
-                    .HasColumnName("productCol");
-
                 entity.Property(e => e.ProductImage)
                     .HasMaxLength(45)
                     .IsUnicode(false)
@@ -209,19 +205,19 @@ namespace DataAccess.Entities
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryIdFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__product__categor__7D439ABD");
+                    .HasConstraintName("FK__product__categor__075714DC");
 
                 entity.HasOne(d => d.ProductOptionsIdFkNavigation)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.ProductOptionsIdFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__product__product__7E37BEF6");
+                    .HasConstraintName("FK__product__product__084B3915");
             });
 
             modelBuilder.Entity<ProductOption>(entity =>
             {
                 entity.HasKey(e => e.ProductOptionsId)
-                    .HasName("PK__productO__F53BADB7A088DABC");
+                    .HasName("PK__productO__F53BADB7628C9AB8");
 
                 entity.ToTable("productOptions", "DOTNET_P3");
 
@@ -243,6 +239,29 @@ namespace DataAccess.Entities
                     .HasColumnName("soundVariant");
             });
 
+            modelBuilder.Entity<SavedAddress>(entity =>
+            {
+                entity.ToTable("savedAddress", "DOTNET_P3");
+
+                entity.Property(e => e.SavedAddressId).HasColumnName("savedAddressId");
+
+                entity.Property(e => e.BillingAddressIdFk).HasColumnName("billingAddressId_fk");
+
+                entity.Property(e => e.UserIdFk).HasColumnName("userId_fk");
+
+                entity.HasOne(d => d.BillingAddressIdFkNavigation)
+                    .WithMany(p => p.SavedAddresses)
+                    .HasForeignKey(d => d.BillingAddressIdFk)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__savedAddr__billi__762C88DA");
+
+                entity.HasOne(d => d.UserIdFkNavigation)
+                    .WithMany(p => p.SavedAddresses)
+                    .HasForeignKey(d => d.UserIdFk)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__savedAddr__userI__753864A1");
+            });
+
             modelBuilder.Entity<State>(entity =>
             {
                 entity.ToTable("state", "DOTNET_P3");
@@ -259,7 +278,7 @@ namespace DataAccess.Entities
             {
                 entity.ToTable("users", "DOTNET_P3");
 
-                entity.HasIndex(e => e.Username, "UQ__users__F3DBC5722F5910DD")
+                entity.HasIndex(e => e.Username, "UQ__users__F3DBC572A6030699")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasColumnName("userId");

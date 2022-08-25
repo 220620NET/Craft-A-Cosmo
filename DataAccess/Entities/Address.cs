@@ -7,8 +7,9 @@ namespace DataAccess.Entities
     {
         public Address()
         {
-            CartBillingAddressFkNavigations = new HashSet<Cart>();
-            CartShippingAddressFkNavigations = new HashSet<Cart>();
+            CartBillingAddressIdFkNavigations = new HashSet<Cart>();
+            CartShippingAddressIdFkNavigations = new HashSet<Cart>();
+            SavedAddresses = new HashSet<SavedAddress>();
         }
 
         public int AddressId { get; set; }
@@ -19,11 +20,19 @@ namespace DataAccess.Entities
         public int CityFk { get; set; }
         public int StateFk { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual City CityFkNavigation { get; set; } = null!;
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual State StateFkNavigation { get; set; } = null!;
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual User? UserIdFkNavigation { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual Zipcode ZipcodeFkNavigation { get; set; } = null!;
-        public virtual ICollection<Cart> CartBillingAddressFkNavigations { get; set; }
-        public virtual ICollection<Cart> CartShippingAddressFkNavigations { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual ICollection<Cart> CartBillingAddressIdFkNavigations { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual ICollection<Cart> CartShippingAddressIdFkNavigations { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual ICollection<SavedAddress> SavedAddresses { get; set; }
     }
 }
