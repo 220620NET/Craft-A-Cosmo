@@ -37,14 +37,16 @@ public class ProductsRepo : IProductsDAO
         return false;
     }    
 
-    public bool GetProductDescription()
+    public Product GetProductByDescription(string description)
     {
-        return false;
+        Product? product = _dbContext.Product.AsNoTracking().FirstORDefault(product => product.description == description);
+        return product?? throw new ProductNotAvailableException();
     }
 
-    public bool GetProductPrice()
+    public Product GetProductPrice(decimal price)
     {
-        return false;
+        Product? product = _dbContext.Product.AsNoTracking().FirstORDefault(product => product.price == price);
+        return product?? throw new ProductNotAvailableException();
     }
 
     public bool GetProductName()
