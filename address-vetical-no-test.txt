@@ -1,0 +1,32 @@
+address controller Layer
+    [HttpPost("address")]
+    CreateAddress(Address address)[AddressNotAvailableException,InvalidInputException]
+    [HttpGet("email")]
+    GetAddressByCity(string City)[AddressNotAvailableException]
+    [HttpGet("UserId")]
+    GetAddressByState(int State)[AddressNotAvailableException]
+    [HttpGet("Username")]
+    GetAddressByStreet(string Street)[AddressNotAvailableException]
+    [HttpDelete("address")]
+    DeleteAddress(int addressId)[AddressNotAvailableException]
+
+
+address service Layer
+    CreateAddress(Address address)[AddressNotAvailableException,InvalidInputException]
+        returns bool
+    GetAddressByCity(string City)
+    GetAddressByState(int State)
+    GetAddressByStreet(string Street)
+    DeleteAddress(int addressId)[AddressNotAvailableException]
+        return bool
+
+
+address dataaccess Layer
+    CreateAddress(Address address)[InvalidInputException]
+        returns bool
+    updateAddress
+    DeleteAddress(int addressId)[AddressNotAvailableException]
+        return bool
+    GetAddressByCity(string City)
+    GetAddressByState(int State)
+    GetAddressByStreet(string Street)
