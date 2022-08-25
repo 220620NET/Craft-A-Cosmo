@@ -16,6 +16,15 @@ public class CartRepo : ICartDAO
   }
 
   /// <inheritdoc />
+  public Cart CreateCart(Cart cartToCreate)
+  {
+    _context.Add(cartToCreate);
+    _context.SaveChanges(); //persist the change
+    _context.ChangeTracker.Clear(); //clear the tracker for the next person
+    return cartToCreate;
+  }
+
+  /// <inheritdoc />
   public Cart AdjustItems(int cartToUpdate, Item itemToAdd)
   {
     Cart? Cart2Find = _context.Carts.Find(cartToUpdate); //try to find the respective cart
@@ -53,14 +62,6 @@ public class CartRepo : ICartDAO
     return true; //this method cannot return false
   }
 
-  /// <inheritdoc />
-  public bool CreateCart(Cart cartToCreate)
-  {
-    _context.Add(cartToCreate);
-    _context.SaveChanges(); //persist the change
-    _context.ChangeTracker.Clear(); //clear the tracker for the next person
-    return true;
-  }
 
   /// <inheritdoc />
   public bool DeleteCart(int cartId2Delete)
