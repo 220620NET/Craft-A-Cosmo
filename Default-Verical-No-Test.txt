@@ -1,0 +1,41 @@
+Auth Controller Layer:
+[HttpPost("name")]
+LoginWithUsername(User newUser)  [UsernameNotAvailableException, InvalidCredentialsException]
+[HttpPost("email ")]
+LoginWithEmail(User newUser) [EmailNotAvailableException, InvalidCredentialsException]
+[HttpPost]
+Register(User newUser) [InvalidInputException, UsernameNotAvailableException, EmailNotAvailableException]
+[HttpPut]
+UpdateUser(User newUser) [UserNotAvaliableException]
+
+User Controller Layer:
+[HttpGet("email/{email}")]
+GetUserByEmail(string email) [EmailNotAvailableException]
+[HttpGet("username/{username}")]
+GetUserByUsername(string username) [UsernameNotAvailableException]
+[HttpGet("{userID}")]
+GetUserByUserId(int userID) [UserNotAvaliableException]
+
+Auth Service Layer:
+LoginWithUsername(string username,string password) [UsernameNotAvailableException, InvalidCredentialsException]
+LoginWithEmail(string email, string password)[EmailNotAvailableException, InvalidCredentialsException]
+Register(User newUser) [InvalidInputException, UsernameNotAvailableException, EmailNotAvailableException]
+UpdateUser(User newUser) [UserNotAvaliableException]
+
+User Service Layer:
+GetUserByEmail(string email)[EmailNotAvailableException]
+GetUserByUsername(string username)[UsernameNotAvailableException]
+GetUserByUserId(int userID) [UserNotAvaliableException]
+
+User DataAccess Layer:
+GetUserByEmail(string email)[EmailNotAvailableException]
+GetUserByUsername(string username)[UsernameNotAvailableException]
+GetUserByUserId(int userID)[UserNotAvaliableException]
+CreateUser(User newUser) [InvalidInputException, UsernameNotAvailableException, EmailNotAvailableException]
+UpdateUser(User newUser) [UserNotAvaliableException]
+
+Finish Sprint tomorrow after board meeting
+meet at noon to merge and migrate to new org
+rescaffold
+pull
+Next Sprint

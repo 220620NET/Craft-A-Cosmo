@@ -1,0 +1,66 @@
+Auth Controller Layer Testing: 
+LoginWithUsername(User) [HttpPost("name/{username}")]
+	- 1 For each catch
+	- 1 for success
+LoginWithEmail(User) [HttpPost("email/{email}")]
+	- 1 For each catch
+	- 1 for success
+Register(User) [HttpPost]
+	- 1 For each catch
+	- 1 for success
+UpdateUser(User) [HttpPut]
+	- 1 For each catch
+	- 1 for success
+
+User Controller Layer: 
+GetUserByEmail(string) [HttpGet("email/{email}")]
+	- 1 For each catch
+	- 1 for success
+GetUserByUsername(string) [HttpGet("username/{username}")]
+	- 1 For each catch
+	- 1 for success
+GetUserByUserId(int) [HttpGet("{userID}")]
+	- 1 For each catch
+	- 1 for success
+
+Auth Service Layer:
+LoginWithUsername(string,string)
+	- 1 For each catch
+	- 1 for success
+LoginWithEmail(string, string)
+	- 1 For each catch
+	- 1 for success
+Register(User)
+	- 1 For each catch
+	- 1 for success
+UpdateUser(User)
+	- 1 For each catch
+	- 1 for success
+
+User Service Layer:
+GetUserByEmail(string)
+	- 1 For each catch
+	- 1 for success
+GetUserByUsername(string)
+	- 1 For each catch
+	- 1 for success
+GetUserByUserId(int)
+	- 1 For each catch
+	- 1 for success
+
+User DataAccess Layer:
+GetUserByEmail(string)
+	- 1 For each catch
+	- 1 for success
+GetUserByUsername(string)
+	- 1 For each catch
+	- 1 for success
+GetUserByUserId(int)
+	- 1 For each catch
+	- 1 for success
+CreateUser(User)
+	- 1 For each catch
+	- 1 for success
+UpdateUser(User)
+	- 1 For each catch
+	- 1 for success

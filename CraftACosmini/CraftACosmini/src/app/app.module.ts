@@ -6,21 +6,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
+import { FormBuilder } from '@angular/forms';
+import { Injectable } from '@angular/core';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CartComponent
+    NavBarComponent,
+    LoginComponent,
+    CartComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, 
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
-  
-
-],
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
