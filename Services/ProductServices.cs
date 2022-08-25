@@ -23,7 +23,33 @@ public class ProductServices
     {
         return _productsRepo.GetAllProducts();
     }
+    public Product GetProductByProductId(int productId)
+    {
+        return _productsRepo.GetProductByProductId(productId);
+    }
+    public Product EditProduct(Product productToEdit)
+        {
+            try
+            {
+                GetProductByProductId(productToEdit.ProductId);
+                return _productsRepo.EditProduct(productToEdit);
 
+            }
+            catch (ProductNotAvailableException)
+            {
+                throw new ProductNotAvailableException();
+            }
+        }
+
+    public List<Product> GetProductDescription()
+    {
+        try{
+
+            GetAllProducts()
+            if
+
+            }
+    }
     /*
     public List<Product> GetProductByCategory(string category)
     {

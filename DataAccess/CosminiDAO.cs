@@ -9,11 +9,12 @@ public interface IProductsDAO
     public List<Product> GetAllProducts();
     public bool AddProduct();
     public bool DeleteProducts();
-    public bool EditProducts();
-    public bool GetProductDescription();
-    public bool GetProductPrice();
+    public Product EditProduct(Product product);
+    public List<Product> GetProductDescription(string userInput);
+    public Product GetProductPrice(int productId);
     public bool GetProductName();
     public bool GetProductImage();
     public bool GetProductByCategory();
     public bool GetProductsByPriceRange();
+    public Product GetProductByProductId(int productId);
 }

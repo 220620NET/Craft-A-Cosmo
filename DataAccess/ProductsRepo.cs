@@ -27,24 +27,59 @@ public class ProductsRepo : IProductsDAO
         return false;
     }
 
-    public bool DeleteProduct()
+    public bool DeleteProducts()
     {
         return false;
     }
-
-    public bool EditProduct()
+    public Product GetProductByProductId(int productId) 
     {
-        return false;
-    }    
-
-    public bool GetProductDescription()
-    {
-        return false;
+        return _context.Products.FirstOrDefault(productToFind => productToFind.ProductId == productId) ?? throw new ResourceNotFound("No product with this ID exists.");
     }
 
-    public bool GetProductPrice()
+    public Product EditProduct(Product product)
     {
-        return false;
+        try {
+                Product? p =_context.Products.FirstOrDefault(t => t.ProductId == product.ProductId);
+                p.CategoryIdFk = product.CategoryIdFk != 0 ? product.CategoryIdFk : p.CategoryIdFk;
+                p.ProductOptionsIdFk = product.ProductOptionsIdFk !=0 ? product.ProductOptionsIdFk : p.ProductOptionsIdFk;
+                p.Price = product.Price != 0 ? product.Price : p.Price;
+                p.Description = product.Description != "" ? product.Description : p.Description;
+                p.ProductName = product.ProductName != "" ? product.ProductName : p.ProductName;
+                p.ProductCol = product.ProductCol != "" ? product.ProductCol : p.ProductCol;
+                p.ProductImage = product.ProductImage != "" ? product.ProductImage : p.ProductImage;
+                p.Listed = product.Listed != 0 ? product.Listed : p.Listed;
+                return p ?? throw new ProductNotAvailableException();
+
+            }
+            catch (ArgumentNullException)
+            {
+                throw new ProductNotAvailableException();
+            }
+
+        }    
+
+    public List<Product> GetProductDescription(string userInput)
+    {
+        List<Product> productList = new List<Product>();
+
+        IEnumerable<Product> productQuery =
+                (from Products in _context.Products
+                where Products.Description.Any(userInput)
+                select Products).ToList<Product>();
+
+        foreach(Product product in productQuery)
+        {
+            productList.Add(product);
+        }
+
+        return productList;
+    }
+    //search * products where description includes "user inputted text"
+
+    public Product GetProductPrice(int productId)
+    {
+        Product productInstance = _context.Find(productId);
+        return productInstance.Price;
     }
 
     public bool GetProductName()
@@ -65,5 +100,6 @@ public class ProductsRepo : IProductsDAO
     public bool GetProductsByPriceRange()
     {
         return false;
-    }               
+    }        
+     
 }
