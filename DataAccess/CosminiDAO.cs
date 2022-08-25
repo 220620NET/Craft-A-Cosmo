@@ -8,12 +8,12 @@ public interface IProductsDAO
 {
     public List<Product> GetAllProducts();
     public bool AddProduct();
-    public bool DeleteProducts();
-    public bool EditProducts();
+    public bool DeleteProduct();
+    public bool EditProduct();
     public bool GetProductDescription();
     public bool GetProductPrice();
     public bool GetProductName();
     public bool GetProductImage();
-    public bool GetProductByCategory();
-    public bool GetProductsByPriceRange();
+    public List<Product> GetProductsByCategory(string category);
+    public List<Product> GetProductsByPriceRange(int priceMin, int priceMax);
 }

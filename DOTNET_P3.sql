@@ -54,7 +54,7 @@ create table DOTNET_P3.category(
 	categoryId int identity primary key,
 	categoryName varchar(45)
 	);
-insert into DOTNET_P3.category (categoryName) values ('Plushie/y');
+insert into DOTNET_P3.category (categoryName) values ('Shirts');
 	
 create table DOTNET_P3.product(
 	productId int identity primary key,
@@ -68,7 +68,7 @@ create table DOTNET_P3.product(
 	listed tinyint
 	);
 
-insert into DOTNET_P3.product (categoryId_fk, productOptionsId_fk, price, description, productName, productCol) values (1,3, 59.99,'Weighted Bud Plush', 'Bud!', 'Still wondering about this column.');
+insert into DOTNET_P3.product (categoryId_fk, productOptionsId_fk, price, description, productName, productCol) values (1,1, 999.99,'Exclusive Cosmo Plush', 'Cosmo', 'Everyones favorite column');
 
 create table DOTNET_P3.billingAddress(
 	billingAddressId int identity primary key,
@@ -97,3 +97,4 @@ drop table DOTNET_P3.orders;
 
 drop table DOTNET_P3.orderDetails;
 
+select * from DOTNET_P3.category;

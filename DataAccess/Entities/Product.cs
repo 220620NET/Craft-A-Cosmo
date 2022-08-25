@@ -20,7 +20,9 @@ namespace DataAccess.Entities
         public string? ProductImage { get; set; }
         public byte? Listed { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual Category CategoryIdFkNavigation { get; set; } = null!;
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual ProductOption ProductOptionsIdFkNavigation { get; set; } = null!;
         public virtual ICollection<Item> Items { get; set; }
     }

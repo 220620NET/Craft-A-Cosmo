@@ -24,21 +24,25 @@ public class ProductServices
         return _productsRepo.GetAllProducts();
     }
 
-    /*
-    public List<Product> GetProductByCategory(string category)
+    
+    public List<Product> GetProductsByCategory(string category)
     {
-        try
+        List<Product> productList = _productsRepo.GetProductsByCategory(category);
+        if(productList == null)
         {
-            Products = _productsRepo.GetProductsByCategory(category);
-            if(category == null)
-            {
-                throw new ResourceNotFound();
-            }
-            return _productsRepo.GetProductsByCategory(category);
+            throw new ResourceNotFound();
         }
-        catch (ResourceNotFound)
+        return _productsRepo.GetProductsByCategory(category);
+    }
+    
+    public List<Product> GetProductsByPriceRange(int priceMin, int priceMax)
+    {
+        List<Product> productList = _productsRepo.GetProductsByPriceRange(priceMin, priceMax);
+        if(productList == null)
         {
-            throw;
+            throw new ResourceNotFound();
         }
-    }*/
+
+        return _productsRepo.GetProductsByPriceRange(priceMin, priceMax);
+    }
 }
