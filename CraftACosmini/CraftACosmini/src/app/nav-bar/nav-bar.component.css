@@ -1,0 +1,33 @@
+.links-logo-nav {
+    display: flex;
+    justify-content: space-between;
+}
+.buttons-nav {
+    display: flex;
+    gap: 1rem;
+}
+.logo-nav {
+    display: flex;
+}
+
+.full-nav {
+    background-color: rgba(127, 255, 212, .5);
+}
+
+.login-menu {
+    display: flex;
+    justify-content: right;
+}
+
+.card {
+    width: 13rem;
+    text-align: center;
+    margin-right: 1px;
+    margin-top: 5px;
+}
+
+.password {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
