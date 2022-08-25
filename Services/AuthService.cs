@@ -54,48 +54,22 @@ public class AuthService
         }
     }
     public async Task<User> Register(User newUser)
-    {  
-        try
-        {
-            bool email = true;
-            bool name = true;
-            if (String.IsNullOrWhiteSpace(newUser.Password) || String.IsNullOrWhiteSpace(newUser.Email))
-            {
-                throw new  InvalidInputException();
-            } 
-            try
-            {
-                User foundEmail = await _userRepo.GetUserByEmail(newUser.Email);
-            }
-            catch (NullReferenceException)
-            {
-                email= false;
-            }
-            finally
-            {
-                try
-                { 
-                    User foundUser = await _userRepo.GetUserByUsername(newUser.Username);
-                }
-                catch (NullReferenceException)
-                {
-                    name = false;
-                }
-            }
-            if(!name && !email)
-            {
+    {   
+        try{ 
+            newUser.Username= newUser.Username!=""?newUser.Username:"";
+            newUser.Email= newUser.Email!=""?newUser.Email:"";
+            User findme= await _userRepo.GetUserByEmail(newUser.Email);
+            User findMe= await _userRepo.GetUserByUsername(newUser.Username);
+            if(newUser.Password==null||newUser.Email==null||newUser.Password==""||newUser.Email==""){
+                throw new InvalidInputException();
+            }else if (findme!=null){
+                throw new EmailNotAvailableException();
+            }else if (findMe!=null){
+                throw new UsernameNotAvailableException();
+            }else{
                 return await _userRepo.CreateUser(newUser);
             }
-            if (name)
-            {
-                throw new UsernameNotAvailableException();
-            }
-            else
-            {
-                throw new EmailNotAvailableException();
-            }
-
-        }
+        }        
         catch (EmailNotAvailableException)
         {
             throw new EmailNotAvailableException();
@@ -108,32 +82,11 @@ public class AuthService
         {
             throw new InvalidInputException();
         }
-
         catch (NullReferenceException)
         {            
             return await _userRepo.CreateUser(newUser);
         }
 
     }
-    public async Task<User> UpdateUser(User newUser)
-    {
-        try
-        {
-            User foundUser = await _userRepo.GetUserByUserId(newUser.UserId);
-            if (String.IsNullOrWhiteSpace(foundUser.Email))
-            {
-                throw new UserNotAvailableException(); 
-            }
-            else { return await _userRepo.UpdateUser(newUser); }
-        }
-        catch (UserNotAvailableException)
-        {
-            throw new UserNotAvailableException();
-        }
-        catch (NullReferenceException)
-        {
-            throw new UserNotAvailableException();
-        }
-
-    }
+    
 }

@@ -8,5 +8,5 @@ public interface IUserRepo
     Task<User> GetUserByUsername(string username);
     Task<User> GetUserByUserId(int userID);
     Task<User> CreateUser(User newUser);
-    Task<User> UpdateUser(User newUser);
+     
 }
